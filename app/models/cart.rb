@@ -12,4 +12,9 @@ class Cart < ApplicationRecord
     foreign_key: :user_id,
     class_name: :User,
     primary_key: :id
+
+    has_many :products,
+    through: :cart_items
+
+    
 end

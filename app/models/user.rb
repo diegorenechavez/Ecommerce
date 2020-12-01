@@ -21,15 +21,11 @@ class User < ApplicationRecord
    validates :password, length: { minimum: 6 , allow_nil: true}
    validates :password_digest, presence: true
    
-   has_many :boards,
+   has_one :cart,
    foreign_key: :user_id,
-   class_name: :Board,
+   class_name: :Cart,
    primary_key: :id
-
-    has_many :pins,
-    class_name: :Pin,
-    foreign_key: :user_id,
-    primary_key: :id
+   
 
    after_initialize :ensure_session_token
 

@@ -13,4 +13,12 @@
 #  updated_at  :datetime         not null
 #
 class Product < ApplicationRecord
+    validates :description, presence: true 
+    validates :price, presence: true 
+    validates :size, presence: true 
+    validates :name, presence: true 
+
+
+    has_one :cart,
+    through: :cart_items
 end
