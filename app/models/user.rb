@@ -25,6 +25,11 @@ class User < ApplicationRecord
    foreign_key: :user_id,
    class_name: :Cart,
    primary_key: :id
+
+   has_many :liked_items,
+   foreign_key: :user_id,
+   class_name: :LikedItems,
+   primary_key: :id
    
 
    after_initialize :ensure_session_token

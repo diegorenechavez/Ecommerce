@@ -18,7 +18,7 @@ __webpack_require__.r(__webpack_exports__);
 
 document.addEventListener("DOMContentLoaded", function () {
   var root = document.getElementById("root");
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Welcome to BenchBnB"), root);
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "welcome to your Ecommerce"), root);
 });
 
 /***/ }),

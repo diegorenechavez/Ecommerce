@@ -9,4 +9,9 @@
 #  user_id    :integer          not null
 #
 class LikedItem < ApplicationRecord
+
+    belongs_to :user,
+    foreign_key: :user_id,
+    class_name: :User,
+    primary_key: :id
 end
