@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import { signup, login, clearErrors } from "../../actions/session_actions.js";
 import Splash from "./splash";
-// import { closeModal, openModal } from "../../actions/modal_actions";
 
 const mapStateToProps = ({ errors }) => {
   return {
@@ -9,19 +8,16 @@ const mapStateToProps = ({ errors }) => {
     user: {
       username: "",
       password: "",
-      firstname: "",
-      lastname: "",
+      name: "",
       email: "",
     },
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    signup: (user) => dispatch(signup(user)),
+    signUp: (user) => dispatch(signup(user)),
     login: (user) => dispatch(login(user)),
     clearErrors: () => dispatch(clearErrors()),
-    // closeModal: () => dispatch(closeModal()),
-    // openModal: (formType) => dispatch(openModal(formType)),
   };
 };
 

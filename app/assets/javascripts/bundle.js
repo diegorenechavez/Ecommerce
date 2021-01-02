@@ -2627,7 +2627,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+ // import LandingContainer from "./"
 
 var App = function App() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.AuthRoute, {
@@ -2696,6 +2696,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var React__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! React */ "./node_modules/React/index.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -2724,15 +2726,73 @@ var Splash = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(Splash);
 
   function Splash(props) {
+    var _this;
+
     _classCallCheck(this, Splash);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = _this.props.user;
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(Splash, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.clearErrors();
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      event.preventDefault();
+      this.props.signUp(this.state);
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(field) {
+      var _this2 = this;
+
+      return function (e) {
+        _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/React__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "This is my Store"));
+      return /*#__PURE__*/React__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "splash-background"
+      }, /*#__PURE__*/React__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "modal-screeen"
+      }, /*#__PURE__*/React__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+        className: "modal",
+        onSubmit: this.handleSubmit
+      }, /*#__PURE__*/React__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+        className: "welcome-text"
+      }), /*#__PURE__*/React__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "user-input",
+        type: "text",
+        placeholder: "Name",
+        onChange: this.handleChange("name"),
+        value: this.state.name
+      }), /*#__PURE__*/React__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "user-input",
+        type: "text",
+        placeholder: "Email",
+        onChange: this.handleChange("email"),
+        value: this.state.email
+      }), /*#__PURE__*/React__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "user-input",
+        type: "text",
+        placeholder: "Create Username",
+        onChange: this.handleChange("username"),
+        value: this.state.username
+      }), /*#__PURE__*/React__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "user-input",
+        type: "password",
+        placeholder: "Create Password",
+        onChange: this.handleChange("password"),
+        value: this.state.password
+      }), /*#__PURE__*/React__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Sign Up"))));
     }
   }]);
 
@@ -2763,7 +2823,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _splash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./splash */ "./frontend/components/splash/splash.jsx");
 
 
- // import { closeModal, openModal } from "../../actions/modal_actions";
+
 
 var mapStateToProps = function mapStateToProps(_ref) {
   var errors = _ref.errors;
@@ -2772,8 +2832,7 @@ var mapStateToProps = function mapStateToProps(_ref) {
     user: {
       username: "",
       password: "",
-      firstname: "",
-      lastname: "",
+      name: "",
       email: ""
     }
   };
@@ -2781,7 +2840,7 @@ var mapStateToProps = function mapStateToProps(_ref) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    signup: function signup(user) {
+    signUp: function signUp(user) {
       return dispatch((0,_actions_session_actions_js__WEBPACK_IMPORTED_MODULE_1__.signup)(user));
     },
     login: function login(user) {
@@ -2789,9 +2848,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     clearErrors: function clearErrors() {
       return dispatch((0,_actions_session_actions_js__WEBPACK_IMPORTED_MODULE_1__.clearErrors)());
-    } // closeModal: () => dispatch(closeModal()),
-    // openModal: (formType) => dispatch(openModal(formType)),
-
+    }
   };
 };
 

@@ -20,6 +20,7 @@ class User < ApplicationRecord
    validates :email, presence:true, uniqueness:true
    validates :password, length: { minimum: 6 , allow_nil: true}
    validates :password_digest, presence: true
+   validates :name, presence: true
    
    has_one :cart,
    foreign_key: :user_id,
