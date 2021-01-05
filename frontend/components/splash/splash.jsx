@@ -6,13 +6,13 @@ class Splash extends React.Component{
       this.state = this.props.user;
       this.handleSubmit = this.handleSubmit.bind(this);
     }
-  componentDidMount() {
-    this.props.clearErrors();
-  }
+  // componentDidMount() {
+  //   this.props.clearErrors();
+  // }
   
   handleSubmit(event) { 
     event.preventDefault();
-    this.props.signUp(this.state);
+    this.props.signup(this.state);
   }
 
   handleChange(field) {
