@@ -9,10 +9,14 @@ class Landing extends React.Component {
     render() { 
         return (
             <div>
+                
                 <h1>YES IT WORKED</h1>
                 <button onClick={this.props.logout}>Logout</button>
             </div>
         )
+
+
+
     }
 }
 

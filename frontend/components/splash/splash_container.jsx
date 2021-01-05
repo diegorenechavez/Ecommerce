@@ -4,20 +4,12 @@ import Splash from "./splash";
 
 const mapStateToProps = ({ errors }) => {
   return {
-    errors: errors.session,
-    user: {
-      username: "",
-      password: "",
-      name: "",
-      email: "",
-    },
+  
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    signup: (user) => dispatch(signup(user)),
-    login: (user) => dispatch(login(user)),
-    clearErrors: () => dispatch(clearErrors()),
+   
   };
 };
 

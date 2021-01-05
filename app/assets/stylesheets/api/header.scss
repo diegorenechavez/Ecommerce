@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
+
+:root {
+  --main-black: hsl(0, 0%, 10%);
+  --main-font: arial
+}
+
+
+.nav-bar {
+  //   width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--main-black);
+}
+
+.left-side-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: var(--main-font);
+  color: white;
+}
+
+.session-button {
+  height: 40px;
+  width: 80px;
+  background-color: whitesmoke;
+  color: black;
+  border: none;
+  font-family: var(--main-font);
+  border-radius: 15px;
+}
