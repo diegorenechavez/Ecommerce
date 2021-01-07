@@ -1,9 +1,65 @@
-.hero-image {
-  width: 100vw;
-  height: 300px;
-}
+// .hero-image {
+//   width: 100vw;
+//   height: 300px;
+// }
 
 .hero-div {
- background-image: image-url('hero3.png');
- background-size: contain;
+  background-image: image-url("hero_banner.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 375px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  
+}
+
+.banner-message{
+    font-family: var(--styled-font);
+    font-size: 80px;
+    color: white;
+    margin-right: 10px;
+
+}
+
+.roladex{
+   font-family: var(--styled-font);
+    font-size: 80px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    transform: translateY(-161px);
+    animation: roladex 5s linear infinite;
+}
+
+.banner-slogan{
+    font-family: var(--styled-font);
+    font-size: 30px;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.message-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.roladex-container{
+    height: 81px;
+    width: 200px;
+    overflow: hidden;
+    
+}
+
+
+@keyframes roladex{
+  0%{}
+  25%{transform: translateY(79px);}
+  50%{transform: translateY(-1px);}
 }

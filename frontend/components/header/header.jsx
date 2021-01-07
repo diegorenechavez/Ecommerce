@@ -3,24 +3,12 @@ import SearchBar from "../search_bar/search_bar";
 
 const Header = ({ currentUserId, logout, login }) => {
   const [sessionForm, setSessionForm] = useState(false);
+ 
   const showLogin = sessionForm ? (
     <div className="login-form">
       <form>
         <h2 className="welcome-text"></h2>
-        {/* <input
-          className="user-input"
-          type="text"
-          placeholder="Name"
-           onChange={this.handleChange("name")}
-           value={this.state.name}
-        />
-        <input
-          className="user-input"
-          type="text"
-          placeholder="Email"
-          onChange={this.handleChange("email")}
-          value={this.state.email}
-        /> */}
+        
         <input
           className="user-input"
           type="text"
@@ -62,13 +50,20 @@ const Header = ({ currentUserId, logout, login }) => {
     </div>
   );
   return (
-    <nav className="nav-bar">
+    <nav>
+    <div className="nav-bar">
       <div className="left-side-nav">
         <div>Logo</div>
         <div>Logo Text</div>
       </div>
       <SearchBar/>
       <div className="right-side-nav">{sessionButtons}</div>
+      </div>
+      <div className="menu">
+        <button className="menu-button">Hair</button>
+        <button className="menu-button">Body</button>
+        <button className="menu-button">Face</button>
+      </div>
     </nav>
   );
 };

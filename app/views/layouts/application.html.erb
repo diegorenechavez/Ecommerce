@@ -4,13 +4,14 @@
     <title>Yosemite</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Bangers&family=Finger+Paint&family=Permanent+Marker&family=Teko:wght@300;400&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <%if current_user %>
   <script defer>
-  // window.splashHero = "<%= image_url('hero.png') %>"-
+  window.splashHero = "<%= image_url('hero_banner.png') %>"-
   window.currentUser = {
     "id": "<%= current_user.id%>",
     "username": "<%= current_user.username%>",
