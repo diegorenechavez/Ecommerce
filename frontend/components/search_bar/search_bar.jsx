@@ -18,8 +18,10 @@ class SearchBar extends React.Component {
       <div className="search-bar-container">
         {/* onSubmit={this.handleSubmit} */}
         <form>
-          <input className="search-field" type="search" placeholder="Soaps, Shampoo, Lotion..." />
-          <button>Q</button>
+          <input className="search-field" type="search" placeholder="Search..." />
+          {/* <button className="search-button">
+            S
+          </button> */}
         </form>
       </div>
     );

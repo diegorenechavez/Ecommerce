@@ -1,4 +1,4 @@
-export const fetchProducts = (category) => {
+export const fetchAllProducts = (category) => {
     return $.ajax({
       url: `/api/products`,
       method: "GET",
@@ -16,7 +16,7 @@ export const fetchProduct = (productId) => {
 
 
 
-// NEEDED FOT SEARCH FETCH
+// NEEDED FOR SEARCH FETCH
 
 // export const getSearchProduct = (query) => {
 //     return $.ajax({

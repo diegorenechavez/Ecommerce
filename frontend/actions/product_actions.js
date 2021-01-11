@@ -18,8 +18,8 @@ export const receivedProduct = (product) => {
     }
 }
 
-export const fetchProducts = (category) => (dispatch) => {
-    return ProductApiUtil.fetchProducts(category).then((result) => dispatch(receivedAllProducts));
+export const fetchAllProducts = (category) => (dispatch) => {
+    return ProductApiUtil.fetchAllProducts().then((result) => dispatch(receivedAllProducts(result)));
 }
 
 export const fetchProduct = (productId) => (dispatch) => { 
