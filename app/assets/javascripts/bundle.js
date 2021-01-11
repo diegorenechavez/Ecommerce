@@ -2557,7 +2557,7 @@ var receivedProduct = function receivedProduct(product) {
 };
 var fetchAllProducts = function fetchAllProducts(category) {
   return function (dispatch) {
-    return _util_products_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchAllProducts().then(function (result) {
+    return _util_products_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchAllProducts(category).then(function (result) {
       return dispatch(receivedAllProducts(result));
     });
   };
@@ -3598,7 +3598,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var fetchAllProducts = function fetchAllProducts(category) {
   return $.ajax({
-    url: "/api/products",
+    url: "/api/products/splash/".concat(category),
     method: "GET"
   });
 };

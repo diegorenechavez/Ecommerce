@@ -19,7 +19,7 @@ export const receivedProduct = (product) => {
 }
 
 export const fetchAllProducts = (category) => (dispatch) => {
-    return ProductApiUtil.fetchAllProducts().then((result) => dispatch(receivedAllProducts(result)));
+    return ProductApiUtil.fetchAllProducts(category).then((result) => dispatch(receivedAllProducts(result)));
 }
 
 export const fetchProduct = (productId) => (dispatch) => { 

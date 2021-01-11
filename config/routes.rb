@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     resources :products, only:[:show, :index]
     resources :carts, only:[:show]
     resources :cart_items, only:[:create, :edit, :destroy, :index, :show] do 
-      resources :products, only:[:show, :index          ]
+      resources :products, only:[:show, :index]
     end 
+    get 'products/splash/:category', :to => 'products#index'
   end 
 end

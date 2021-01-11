@@ -1,6 +1,6 @@
 export const fetchAllProducts = (category) => {
     return $.ajax({
-      url: `/api/products`,
+      url: `/api/products/splash/${category}`,
       method: "GET",
     });
 }
