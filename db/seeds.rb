@@ -13,4 +13,8 @@ product_4 = Product.create(name: "American Cream", category:"featured", price:10
 product_5 = Product.create(name: "Nana", category:"featured", price:10, size:16, description:"Step out of your clothes, hop into the shower and lather up with this creamy, dreamy body wash that smells just like fresh-baked banana bread." , instruction:"Get naked, hop in the shower and lather up." )
 product_6 = Product.create(name: "Rehab", category:"featured", price:25, size:16, description:"For hair that's been heat-styled, bleached, dyed, teased and flat-out stressed." , instruction:"Get naked, hop in the shower and lather up." )
 product_7 = Product.create(name: "Daddy-O", category:"featured", price:15, size:16, description:"Ideal for blondes and people with gray or graying hair who want to keep brass at bay and leave their tresses looking fresh, healthy, bright and shiny." , instruction:"Get naked, hop in the shower and lather up." )
-product_7 = Product.create(name: "Dark Angels", category:"featured", price:15, size:16, description:"For sensitive skin with excess oil. It features deep-cleansing charcoal powder and rhassoul mud, exfoliating sugar and softening avocado oil.", instruction:"Get naked, hop in the shower and lather up."  )
+product_8 = Product.create(name: "Dark Angels", category:"face", price:15, size:16, description:"For sensitive skin with excess oil. It features deep-cleansing charcoal powder and rhassoul mud, exfoliating sugar and softening avocado oil.", instruction:"Get naked, hop in the shower and lather up."  )
+product_9 = Product.create(name: "Nana", category:"body", price:10, size:16, description:"Step out of your clothes, hop into the shower and lather up with this creamy, dreamy body wash that smells just like fresh-baked banana bread." , instruction:"Get naked, hop in the shower and lather up." )
+
+
+product_2.photo.attach(io: open('https://bubbles-lush-dev.s3-us-west-1.amazonaws.com/dirty.png'), filename:'dirty.png')

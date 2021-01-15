@@ -1,0 +1,59 @@
+.hair{
+    background-image: image-url('hair_banner.png');
+    background-repeat: no-repeat;
+  background-size: 100%;
+  height: 380px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.body{
+      background-image: image-url('body_banner.png');
+    background-repeat: no-repeat;
+  background-size: 100%;
+  height: 380px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  
+}
+
+.face{
+  background-image: image-url('face_banner.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 380px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+
+
+.word-container{
+    font-family: var(--styled-font);
+    font-size: 80px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    
+    
+}
+
+.one{
+    margin-left: -27px;
+}
+

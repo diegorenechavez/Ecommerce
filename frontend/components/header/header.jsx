@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import SearchBar from "../search_bar/search_bar";
 
 const Header = ({ currentUserId, logout, login }) => {
@@ -51,16 +52,24 @@ const Header = ({ currentUserId, logout, login }) => {
     <nav>
       <div className="nav-bar">
         <div className="left-side-nav">
-          <img src={window.logoURL} alt="" className="logo"/>
-          <div className="logo-text">Bubbles</div>
+          <Link to={"/"}>
+            <img src={window.logoURL} alt="" className="logo" />
+            <div className="logo-text">Bubbles</div>
+          </Link>
         </div>
         <SearchBar />
         <div className="right-side-nav">{sessionButtons}</div>
       </div>
       <div className="menu">
-        <button className="menu-button">Hair</button>
-        <button className="menu-button">Body</button>
-        <button className="menu-button">Face</button>
+        <Link to={"/hair"}>
+          <button className="menu-button">Hair</button>
+        </Link>
+        <Link to={"/body"}>
+          <button className="menu-button">Body</button>
+        </Link>
+        <Link to={"/face"}>
+          <button className="menu-button">Face</button>
+        </Link>
       </div>
     </nav>
   );

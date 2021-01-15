@@ -21,4 +21,6 @@ class Product < ApplicationRecord
 
     has_one :cart,
     through: :cart_items
+
+    has_one_attached :photo
 end
