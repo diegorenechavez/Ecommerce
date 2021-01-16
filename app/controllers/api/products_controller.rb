@@ -17,10 +17,12 @@ class Api::ProductsController < ApplicationController
          render :index 
         end 
     end 
-
+    
     def show
-        @products = Product.find(params[:id])
+        @product = Product.find(params[:id])
         render :show
     end 
+
+   
 
 end

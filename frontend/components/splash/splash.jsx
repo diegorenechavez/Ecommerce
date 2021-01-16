@@ -16,9 +16,10 @@ class Splash extends React.Component {
 
   render() {
     if (this.props.products.length === null) return null; 
-    const data = this.props.products[this.props.products.length - 1] ? <section>
-      {this.props.products.map((product) => (<ProductItem product={product} />))}
-    </section> : <Spinner />
+    
+    const data = this.props.products[this.props.products.length - 1] ? <div className="section">
+      {this.props.products.map((product) => (<ProductItem product={product} key={product.id} />))}
+    </div> : <Spinner />
     return (
       <>
         <div className="splash-background">
@@ -39,9 +40,31 @@ class Splash extends React.Component {
         </div>
         <div className="new-features">
           <h2 className="heading">New Products</h2>
+          <hr className="style-six"/>
           {data}
           
         </div>
+        <section className="below-the-fold">
+          <div className="product-promotion">
+            <div className="show-container">
+            <img src={window.productURL} alt=""  className="product-image milk-image"/>
+              <button className="index-cart-button learn-more-button">Learn More</button>
+            </div>
+            <div className="product-blurb">
+              <h2 className="product-index-name milk">Super Milk</h2>
+              <h4 className="product-index-price milk-description">Conditioning Hair Primer</h4>
+              Perfect for curls, coils and textured hair, this light, lotion-y leave-in is a great first step in your post-shower routine or can be used as a refresher between washes. Doing the LOC method? This is your first step.
+            </div>
+            <img src={window.promoURL} alt="" className="promo"/>
+          </div>
+          <img src={window.footBannerURL} alt="" className="foot-banner" />
+          <div className="footer">
+            Contact Me | Portfolio | LinkedIn
+             <img src={window.meURL} alt="" className="me" />
+            
+          </div >
+        </section>
+        
       </>
     );
   }

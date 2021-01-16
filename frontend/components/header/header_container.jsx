@@ -5,7 +5,8 @@ import {
   clearErrors,
   logout,
 } from "../../actions/session_actions.js";
-import Header from "./header";
+// import Header from "./header";
+import Header from "./header_component";
 
 const mapStateToProps = (state) => {
   return {

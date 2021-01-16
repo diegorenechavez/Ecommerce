@@ -1,12 +1,159 @@
 // Place all the styles related to the api/Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-p{
-    display: flex;
-    flex-direction: column;
+
+.item-details {
+  font-family: var(--styled-font);
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+.product-index-name {
+  font-size: 25px;
+  margin: 5px;
+  color: var(--main-black);
+  font-family: var(--styled-font);
+}
 
-.dummy-item{
-    font-family: var(--functional-font);
+.product-index-price {
+  color: var(--main-purple);
+  margin-top: 20px;
+  font-family: var(--functional-font);
+}
+
+#index-size {
+  color: var(--main-green);
+}
+
+.product-image {
+  width: 250px;
+
+  cursor: pointer;
+}
+
+.featured {
+  display: flex;
+}
+
+.section {
+  display: flex;
+  flex-direction: row;
+  margin: 50px;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.index-cart-button {
+  height: 40px;
+  padding: 11px;
+  width: 140px;
+  color: white;
+  background-color: var(--main-black);
+  font-size: 14px;
+  border: none;
+  border-radius: 15px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 400ms ease-in-out;
+}
+
+.index-cart-button:hover {
+  // opacity: 0.8;
+  background-color: transparent;
+  color: var(--main-black);
+  border: 1px solid black;
+}
+
+hr.style-six {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  width: 65%;
+  margin-top: 40px;
+}
+
+.product-promotion {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-evenly; */
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.milk {
+  text-align: center;
+  font-size: 50px;
+}
+.product-blurb {
+  width: 250px;
+  font-family: var(--functional-font);
+  line-height: 35px;
+  text-align: center;
+}
+// width: 68%;
+// /* height: 21px; */
+// margin: 27px;
+.milk-image {
+  height: 400px;
+  width: 400px;
+  margin-left: -135px;
+}
+
+.show-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.milk-description {
+  text-align: center;
+  font-style: italic;
+  font-size: 20px;
+}
+
+.learn-more-button {
+  margin-left: -130px;
+  background-color: var(--main-green);
+  border: none;
+}
+
+.promo {
+  width: 350px;
+  height: 350px;
+  margin-left: 33px;
+}
+
+.foot-banner {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.footer {
+  display: flex;
+  height: 225px;
+  width: 100%;
+  background-color: var(--main-black);
+  align-items: center;
+  color: white;
+  justify-content: space-evenly;
+  font-family: var(--functional-font);
+  margin-top: -3px;
+  font-size: 25px;
+}
+
+.me {
+  height: 150px;
+  width: 150px;
+  margin-left: -319px;
 }
