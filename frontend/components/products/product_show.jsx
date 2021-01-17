@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../header/header_container";
+import ReviewsIndexContainer from "../reviews/reviews_index_container"
+import ReviewsIndexCon from "../reviews/reviews_index"
+import ReviewIndex from "../reviews/reviews_index"
 
 class ProductShow extends React.Component {
   constructor(props) {
@@ -15,6 +18,7 @@ class ProductShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchProduct(this.props.match.params.productId);
+    this.props.fetchReviews(this.props.match.params.productId)
   }
 
   likeItem() {
@@ -35,6 +39,9 @@ class ProductShow extends React.Component {
 
   render() {
     if (!this.props.product) {
+      return null;
+    }
+    if (!this.props.reviews) {
       return null;
     }
     const { product } = this.props;
@@ -128,7 +135,14 @@ class ProductShow extends React.Component {
               alt=""
             />
           </div>
+          {/* {this.reviews} */}
         </section>
+
+        {/* <ReviewsIndexContainer product={product} /> */}
+        <ReviewIndex className="SEE MEEE" reviews={this.props.reviews} fetchReviews={this.props.fetchReviews} productId={this.props.product.id}/>
+        {console.log(
+          <ReviewIndex className="SEE MEEE" reviews={this.props.reviews} />
+        )}
       </div>
     );
   }

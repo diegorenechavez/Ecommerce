@@ -1,15 +1,20 @@
-class ReviewIndex extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+import React from "react"
+import ReviewItem from "./review_index_item"
 
+class ReviewIndex extends React.Component { 
+    constructor(props) { 
+        super(props)
+    }
+    componentDidMount() { 
+        this.props.fetchReviews(this.props.productId)
+    }
     render() {
+        if (!this.props.reviews.length) return {}
         return (
-            <div className="reviews">
-                <ul>
-                    {this.props.reviews.reverse().map(review => (<ReviewItem review={review}
-                        key={review.id} />))}
-                </ul>
+            <div className="COCK AND BALLS">
+        
+                {this.props.reviews.map((review, i) => (
+                    <h1 key={review.i}>{review.id}</h1>))}
             </div>
         )
     }

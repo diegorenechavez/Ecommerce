@@ -17,7 +17,7 @@
 #  index_reviews_on_product_id  (product_id)
 #
 class Review < ApplicationRecord
-    validates :body, :rating, :author_id, :business_id, presence:true
+    validates :body, :rating, :author_id, :product_id, presence:true
     validates :rating, inclusion:{in: (0..5)}
     
     belongs_to :product,

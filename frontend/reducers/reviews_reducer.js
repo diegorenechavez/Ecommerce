@@ -10,10 +10,8 @@ const reviewsReducer = (oldState = {}, action) => {
     let newState = Object.assign({}, oldState)
     switch (action.type) {
         case RECEIVED_ALL_REVIEWS:
-            let reviewArr = Object.values(action.reviews);
-            let firstReview = reviewArr[0];
-            newState[firstReview.product_id] = action.reviews;
-            return newState;
+            return action.reviews
+            
         case RECEIVED_USER_REVIEWS:
             newState = action.reviews;
             return newState;

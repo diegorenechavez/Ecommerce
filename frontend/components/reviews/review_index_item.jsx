@@ -1,9 +1,9 @@
 import React from 'react'
 
-class ReviewItem extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+// class ReviewItem extends React.Component {
+    // constructor(props) {
+    //     super(props)
+    // }
 
     // currentStars() {
     //     return (
@@ -22,33 +22,29 @@ class ReviewItem extends React.Component {
     //     )
     // }
 
-    render() {
-        // if (this.state.loading) {
-        //     return <div></div>
-        // }
-        //   if (!this.props.reviews) {
-        //     return null;
-        // }
-        return (
-            <li>
-                <div className="reviews">
-                    <div className="profile-picture">
-                    </div>
-                    <div className="review-user-detail">
-                        <h3 className="review-username">{this.props.review.user}</h3>
-                    </div>
-                    <div className="review-content">
-                        <div>
-                            {/* {this.currentStars()} */}
-                        </div>
-                        <div className="review-body">
-                            {this.props.review.body}
-                        </div>
-                    </div>
-                </div>
-            </li>
-        )
-    }
+    // render() {
+    //     // if (this.state.loading) {
+    //     //     return <div></div>
+    //     // }
+    //       if (!this.props.reviews) {
+    //         return null;
+    //     }
+    //     return (
+    //         <div>
+    //             <h1>{this.props.review.title}</h1>
+    //         </div>
+    //     )
+    // }
+// }
+
+const ReviewItem = (props) => { 
+    if(!props.review) return null
+    return (
+        <div>
+            {console.log(props.review.title)}
+            <h1>{props.review.title}</h1>
+        </div>
+    )
 }
 
 export default ReviewItem;

@@ -1,5 +1,6 @@
 import React from "React";
 import ProductItem from "../products/product_item"
+import ReviewIndex from "../reviews/reviews_index";
 import Spinner from "../spinner";
 
 class Splash extends React.Component {
