@@ -201,7 +201,7 @@ a{
     align-items: center;
     flex-direction: row;
     width: 300px;
-    margin-right: 91px;
+    margin-right: -28px;
 }
 
 .session-form-toggle{
@@ -212,4 +212,17 @@ a{
   margin: 3px;
   text-decoration:  underline var(--main-purple);
 
+}
+
+.logout-container{
+      width: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-user{
+  color: white;
+  font-family: var(--functional-font);
 }

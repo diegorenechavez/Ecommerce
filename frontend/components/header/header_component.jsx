@@ -145,32 +145,11 @@ class Header extends React.Component {
 
     const registerModal = this.props.currentUserId ? null : showform;
 
-    // const showLogin = sessionForm ? (
-    //     <div className="login-form">
-    //         <form>
-    //             <h2 className="welcome-text"></h2>
-
-    //             <input
-    //                 className="user-input"
-    //                 type="text"
-    //                 placeholder="Create Username"
-    //                 onChange={this.update("username")}
-    //                 value={this.state.username}
-    //             />
-    //             <input
-    //                 className="user-input"
-    //                 type="password"
-    //                 placeholder="Create Password"
-    //                 onChange={this.update("password")}
-    //                 value={this.state.password}
-    //             />
-    //             <button>Sign Up</button>
-    //         </form>
-    //     </div>
-    // ) : null;
+    
     const sessionButtons = this.props.currentUserId ? (
       <div className="session-buttton-container">
-        <div>
+        <div className="logout-container">
+          <h6 className="welcome-user">Hello,&nbsp;{this.props.currentUser.name}!</h6>
           <button onClick={this.props.logout} className="session-button logout">
             Log Out
           </button>

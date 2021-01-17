@@ -81,6 +81,19 @@ hr.style-six {
   margin-top: 40px;
 }
 
+hr.style-7 {
+  border-top: 1px solid rgba(128, 128, 128, 0.337);
+  height: 0;
+  width: 264px;
+}
+
+.free-shipping{
+  font-family: var(--functional-font);
+  color: var(--main-black);
+  font-size: 14px;
+  text-align: center;
+}
+
 .product-promotion {
   display: flex;
   flex-direction: row;
@@ -156,4 +169,142 @@ hr.style-six {
   height: 150px;
   width: 150px;
   margin-left: -319px;
+}
+
+.product-show-container{
+  margin-top: 35px;
+  
+}
+
+.product-use-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+
+.product-display{
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 960px;
+    justify-content: space-around;
+}
+
+.product-display-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-show-image{
+  width: 355px;
+}
+
+.product-information{
+    display: flex;
+    flex-direction: column;
+}
+
+.product-show-category{
+    font-family: var(--functional-font);
+    color: var(--main-purple);
+    font-style: italic;
+}
+
+.product-show-price{
+  font-family: var(--functional-font);
+  color: var(--main-purple);
+}
+
+.product-show-name{
+  font-family: var(--styled-font);
+  font-size: 50px;
+  margin: 7px 20px 20px 20px;
+}
+
+.product-show-size{
+  font-family: var(--functional-font);
+  display: inline;
+  color: var(--main-green);
+}
+
+.product-show-right{
+  display: flex;
+  justify-content: space-around;
+  font-size: 16px;
+  margin-bottom: 35px;
+}
+
+.show-cart-button{
+  margin-bottom: 25px;
+}
+
+.packagin-container{
+      display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 50px;
+}
+
+.packaging-blurb{
+      width: 30%;
+    background-color: var(--main-black);
+    color: white;
+    font-family: var(--functional-font);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+    line-height: 24px;
+}
+
+.packaging-title{
+  font-family: var(--styled-font);
+    font-size: 25px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.94);
+    margin: 15px;
+    letter-spacing: 3px;
+}
+
+.usage-buttons{
+  width: 100px;
+  height: 48px;
+  font-family: var(--functional-font);
+  font-size: 16px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 15px;
+  text-decoration: underline;
+}
+
+.usage-buttons:focus{
+  color: var(--main-green);
+}
+
+.instruction{
+  display: flex;
+  justify-content: space-between;
+  width: 900px;
+}
+
+.instruction-image{
+  width: 250px;
+}
+
+.instruction-text{
+  font-family: var(--styled-font);
+  text-align: center;
+  margin: auto;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.des{
+  width: 630px;
+  margin: 0;
 }

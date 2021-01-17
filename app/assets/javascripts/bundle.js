@@ -2945,32 +2945,14 @@ var Header = /*#__PURE__*/function (_React$Component) {
         className: "session-form-toggle",
         onClick: this.changeForm
       }, "Login Instead"))));
-      var registerModal = this.props.currentUserId ? null : showform; // const showLogin = sessionForm ? (
-      //     <div className="login-form">
-      //         <form>
-      //             <h2 className="welcome-text"></h2>
-      //             <input
-      //                 className="user-input"
-      //                 type="text"
-      //                 placeholder="Create Username"
-      //                 onChange={this.update("username")}
-      //                 value={this.state.username}
-      //             />
-      //             <input
-      //                 className="user-input"
-      //                 type="password"
-      //                 placeholder="Create Password"
-      //                 onChange={this.update("password")}
-      //                 value={this.state.password}
-      //             />
-      //             <button>Sign Up</button>
-      //         </form>
-      //     </div>
-      // ) : null;
-
+      var registerModal = this.props.currentUserId ? null : showform;
       var sessionButtons = this.props.currentUserId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "session-buttton-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "logout-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", {
+        className: "welcome-user"
+      }, "Hello,\xA0", this.props.currentUser.name, "!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.props.logout,
         className: "session-button logout"
       }, "Log Out"))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null);
@@ -3038,7 +3020,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    currentUserId: state.session.currentUser
+    currentUserId: state.session.currentUser,
+    currentUser: state.entities.users[state.session.currentUser]
   };
 };
 
@@ -3694,9 +3677,17 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(ProductShow);
 
   function ProductShow(props) {
+    var _this;
+
     _classCallCheck(this, ProductShow);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      infoFlag: "description"
+    };
+    _this.setDescription = _this.setDescription.bind(_assertThisInitialized(_this));
+    _this.setInstructions = _this.setInstructions.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(ProductShow, [{
@@ -3705,19 +3696,101 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
       this.props.fetchProduct(this.props.match.params.productId);
     }
   }, {
+    key: "setDescription",
+    value: function setDescription() {
+      this.setState({
+        infoFlag: "description"
+      });
+    }
+  }, {
+    key: "setInstructions",
+    value: function setInstructions() {
+      this.setState({
+        infoFlag: "instructions"
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       if (!this.props.product) {
         return null;
       }
 
+      var product = this.props.product;
+      var info = this.state.infoFlag === "description" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
+        className: "instruction-text"
+      }, this.props.product.description) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
+        className: "instruction-text"
+      }, this.props.product.instruction);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "prodcut-show-container"
+        className: "product-show-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
-        className: "product"
+        className: "product-display-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: ""
-      })));
+        className: "product-display"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        className: "product-show-image",
+        src: product.photoUrls[0],
+        alt: ""
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "product-information"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+        className: "product-show-category"
+      }, product.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
+        className: "product-show-name"
+      }, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "product-show-right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", {
+        className: "product-show-price"
+      }, "Price: $", product.price, " "), "|", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", {
+        className: "product-show-size"
+      }, "Size: ", product.size, ".oz")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "index-cart-button show-cart-button"
+      }, "Add To Cart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
+        className: "style-7"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "free-shipping"
+      }, "Free Shipping on Orders over $50"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
+        className: "style-7"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
+        className: "product-use-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "toggle-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "usage-buttons",
+        onClick: function onClick() {
+          return _this2.setDescription();
+        }
+      }, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "usage-buttons",
+        onClick: function onClick() {
+          return _this2.setInstructions();
+        }
+      }, "Instructions"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
+        className: "des"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "instruction"
+      }, info, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        className: "instruction-image",
+        src: product.photoUrls[1],
+        alt: ""
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
+        className: "seperator"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
+        className: "mid-show-page"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "packagin-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "packaging-blurb"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+        className: "packaging-title"
+      }, "Things You Should Know About Bubbles Packaging"), "We're proud of our packaging-free products, but, we're also proud of our packaged products. Reusable, recyclable, biodegradable, compostable, and so much more. Our packaging is on a mission to reduce ours and your impact on the world."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        className: "packaging-picture",
+        src: window.packagingURL,
+        alt: ""
+      }))));
     }
   }]);
 
