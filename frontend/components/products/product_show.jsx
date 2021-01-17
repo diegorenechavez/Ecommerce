@@ -7,6 +7,7 @@ class ProductShow extends React.Component {
     super(props);
     this.state = {
       infoFlag: "description",
+      liked: false,
     };
     this.setDescription = this.setDescription.bind(this);
     this.setInstructions = this.setInstructions.bind(this);
@@ -14,6 +15,14 @@ class ProductShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchProduct(this.props.match.params.productId);
+  }
+
+  likeItem() {
+    if (this.state.liked === false) {
+      this.setState({ liked: true });
+    } else if (this.state.liked) {
+      this.setState({ liked: false });
+    }
   }
 
   setDescription() {
@@ -29,7 +38,7 @@ class ProductShow extends React.Component {
       return null;
     }
     const { product } = this.props;
-
+    const heart = this.state.liked ? window.fullHeartURL : window.emptyHeartURL;
     const info =
       this.state.infoFlag === "description" ? (
         <h1 className="instruction-text">{this.props.product.description}</h1>
@@ -45,8 +54,15 @@ class ProductShow extends React.Component {
                 className="product-show-image"
                 src={product.photoUrls[0]}
                 alt=""
-                        />
-                        <button className="review-button">Write Review</button>
+              />
+              <div className="like-button-container">
+                <img
+                  onClick={() => this.likeItem()}
+                  className="like-button"
+                  src={heart}
+                  alt=""
+                />
+              </div>
             </div>
             <div className="product-information">
               <h3 className="product-show-category">{product.category}</h3>
