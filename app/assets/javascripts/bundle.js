@@ -3795,7 +3795,8 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      infoFlag: "description"
+      infoFlag: "description",
+      liked: false
     };
     _this.setDescription = _this.setDescription.bind(_assertThisInitialized(_this));
     _this.setInstructions = _this.setInstructions.bind(_assertThisInitialized(_this));
@@ -3806,6 +3807,19 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchProduct(this.props.match.params.productId);
+    }
+  }, {
+    key: "likeItem",
+    value: function likeItem() {
+      if (this.state.liked === false) {
+        this.setState({
+          liked: true
+        });
+      } else if (this.state.liked) {
+        this.setState({
+          liked: false
+        });
+      }
     }
   }, {
     key: "setDescription",
@@ -3831,6 +3845,7 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
       }
 
       var product = this.props.product;
+      var heart = this.state.liked ? window.fullHeartURL : window.emptyHeartURL;
       var info = this.state.infoFlag === "description" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
         className: "instruction-text"
       }, this.props.product.description) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
@@ -3848,9 +3863,16 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
         className: "product-show-image",
         src: product.photoUrls[0],
         alt: ""
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "review-button"
-      }, "Write Review")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "like-button-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        onClick: function onClick() {
+          return _this2.likeItem();
+        },
+        className: "like-button",
+        src: heart,
+        alt: ""
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "product-information"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
         className: "product-show-category"
