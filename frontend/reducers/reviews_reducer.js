@@ -2,7 +2,7 @@ import {
   RECEIVED_ALL_REVIEWS,
   RECEIVED_REVIEW,
   RECEIVED_USER_REVIEWS,
-REMOVED_REVIEW
+    REMOVED_REVIEW
  } from "../actions/review_actions";
 
 const reviewsReducer = (oldState = {}, action) => {
@@ -19,11 +19,11 @@ const reviewsReducer = (oldState = {}, action) => {
             return newState;
         case RECEIVED_REVIEW:
             return Object.assign(newState, action.review);
-        case REMOVE_REVIEW:
+        case REMOVED_REVIEW:
             delete newState[action.reviewId];
             return newState;
         default:
-            return state;
+            return oldState;
     }
 }
 
