@@ -31,6 +31,11 @@ class User < ApplicationRecord
    foreign_key: :user_id,
    class_name: :LikedItems,
    primary_key: :id
+
+     has_many :reviews,
+    primary_key: :id,
+    foreign_key: :author_id,
+    class_name: :Review
    
 
    after_initialize :ensure_session_token

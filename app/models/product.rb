@@ -22,5 +22,10 @@ class Product < ApplicationRecord
     has_one :cart,
     through: :cart_items
 
+    has_many :reviews,
+    primary_key: :id,
+    foreign_key: :product_id,
+    class_name: :Review
+
     has_many_attached :photos
 end
