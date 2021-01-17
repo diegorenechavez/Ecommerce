@@ -5,6 +5,7 @@
 #  id         :bigint           not null, primary key
 #  body       :text             not null
 #  rating     :integer          not null
+#  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  author_id  :integer          not null

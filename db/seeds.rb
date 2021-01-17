@@ -5,10 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require "open-uri"
+require 'open-uri'
 User.destroy_all
 Product.destroy_all
-Review.destroy_all
 User_1 = User.create(name:"Morty", username:"AdventureKid", email:"morty@rick.com", password:"password")
 product_1 = Product.create(name: "Big Shampoo", category:"hair", price:25, size:10, description:"Over half the base of Big Shampoo is made with sea salt to help give massive volume to hair in need of a boost. Sea salt is also full of minerals and de-greases hair, removing dead skin cells and dirt without stripping natural oils for a fresh, squeaky clean feeling. We balance the sea salt with seaweed infusion and extra virgin coconut oil for soft, nourished locks. Finally, fresh citrus juices are squeezed in for incredible shine. It's no wonder this one's a best-seller!", instruction:"Apply a small amount to the hair, work into a lather, then rinse thoroughly." )
 # product_2 = Product.create(name: "Dirty Body Wash", category:"featured", price:10, size:16, description:"Like a cool dip in a mountain spring, Dirty leaves you feeling invigorated thanks to refreshing spearmint and menthol crystals. We've also loaded this self-preserving gel with vegetarian glycerin and sea salt to soften your skin while you're washing up", instruction:"Get naked, hop in the shower and lather up." )
@@ -38,3 +37,5 @@ product_7.photos.attach(io: open("https://bubbles-lush-dev.s3-us-west-1.amazonaw
 # product_9.photos.attach(io: open("https://bubbles-lush-dev.s3-us-west-1.amazonaws.com/nana.jpg"), filename:'nana.jpg')
 # product_9.photos.attach(io: open("https://bubbles-lush-dev.s3-us-west-1.amazonaws.com/nana2.jpg"), filename:'nana2.jpg')
 
+# __________________________________REVIEWS__________________________________________________
+review_1 = Review.create(title: "My Favorite Find!", rating: 5, author_id:1, product_id:4, body:"OK, I will start by admitting the texture of this body wash takes some getting used to - it is reminiscent of boogers or slime. Once you get over this fact, this body wash is pretty amazing, and one of my absolute favorites. I always use exfoliating gloves, loofah, or wash cloth to apply because it helps make suds. The scent is my favorite - banana! It lingers a bit throughout the morning, and moreso when I use my favorite body lotion with it - Sympathy for the Skin, which is like vanilla with a teensy tiny hint of banana. My skin feels so soft! Seriously, just try it. Once you get over the texture, it is wonderful.")
