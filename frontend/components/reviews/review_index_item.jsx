@@ -37,14 +37,15 @@ import React from 'react'
     // }
 // }
 
-const ReviewItem = (props) => { 
-    if(!props.review) return null
+const ReviewIndexItem = (props) => { 
     return (
-        <div>
-            {console.log(props.review.title)}
-            <h1>{props.review.title}</h1>
-        </div>
-    )
+      <li className="review-wrapper">
+        <h1 className="review-title">{props.review.title}</h1>
+        <h3 className="review-author">{props.review.username}</h3>
+        <h1 className="review-rating">{props.review.rating}/5</h1>
+        <p className="review-body">{props.review.body}</p>
+      </li>
+    );
 }
 
-export default ReviewItem;
+export default ReviewIndexItem

@@ -11,66 +11,90 @@ class Header extends React.Component {
       username: "",
       password: "",
       showLogin: false,
+      freeze: true
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.changeForm = this.changeForm.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+    this.freezePage = this.freezePage.bind(this);
+    this.unfreezePage = this.unfreezePage.bind(this);
   }
+
+  componentDidMount() {
+    if (!this.props.currentUserId) {
+      this.freezePage();
+   
+    }
+  }
+
+  componentDidUpdate() { 
+     this.unfreezePage();
+  }
+
+  freezePage() {
+        document.body.style.overflow ="hidden"
+      // this.setState({ freezePage: true });
+  }
+  
+
+  unfreezePage() {
+      // this.setState({ freezePage: false });
+      document.body.style.overflow = "unset";
     
-    
-    demoLogin(e) {
-        e.preventDefault();
-        // this.props.clearErrors();
-        let login = this.props.login 
-        let that = this;
-        let count = 0;
-        let demo = 'AdventureKidpassword';
-        if (this.demo) return;
-        this.setState({
-            username: '',
-            password: ''
+  }
+
+  demoLogin(e) {
+    e.preventDefault();
+    // this.props.clearErrors();
+    let login = this.props.login;
+    let that = this;
+    let count = 0;
+    let demo = "AdventureKidpassword";
+    if (this.demo) return;
+    this.setState({
+      username: "",
+      password: "",
+    });
+    this.demo = setInterval(() => {
+      let type = count < 12 ? "username" : "password";
+      that.setState({ [type]: that.state[type] + demo[count] });
+      count++;
+      if (count === 20) {
+        clearInterval(this.demo);
+        login({
+          username: "AdventureKid",
+          password: "password",
         });
-        this.demo = setInterval(() => {
-            let type = count < 12 ? 'username' : 'password';
-            that.setState({ [type]: that.state[type] + demo[count] });
-            count++;
-            if (count === 20) {
-                clearInterval(this.demo)
-                login({
-                    username: "AdventureKid",
-                    password: "password",
-                });
-            }
-        }, 50)
-    }
+      }
+    }, 50);
+  }
 
-    update(field) {
-        return (e) =>
-        this.setState({
-            [field]: e.currentTarget.value,
-        });
-    }
+  update(field) {
+    return (e) =>
+      this.setState({
+        [field]: e.currentTarget.value,
+      });
+  }
 
-    handleSubmit(e) {
-        e.preventDefault();
-        const user = {
-        email: this.state.email,
-        name: this.state.name,
-        username: this.state.username,
-        password: this.state.password,
-        };
-        this.props.signup(user).then(() => this.props.login(user));
-        
-    }
+  handleSubmit(e) {
+    e.preventDefault();
+    const user = {
+      email: this.state.email,
+      name: this.state.name,
+      username: this.state.username,
+      password: this.state.password,
+    };
+    this.props.signup(user).then((user) => this.props.login(user)).then(this.unfreezePage());
+  }
 
-    changeForm() {
-        if (this.state.showLogin) {
-        this.setState({ showLogin: false });
-        } else {
-        this.setState({ showLogin: true });
-        }
+  changeForm() {
+    if (this.state.showLogin) {
+      this.setState({ showLogin: false });
+    } else {
+      this.setState({ showLogin: true });
     }
+  }
 
   render() {
     const showform = this.state.showLogin ? (
@@ -95,8 +119,15 @@ class Header extends React.Component {
               placeholder="Password"
             />
             <button className="form-buttons register-button">Login</button>
-                <button onClick={this.demoLogin} className="form-buttons demo-button">Demo Login</button>
-            <span className="session-form-toggle" onClick={this.changeForm}>Not a member? Sign Up!</span>
+            <button
+              onClick={this.demoLogin}
+              className="form-buttons demo-button"
+            >
+              Demo Login
+            </button>
+            <span className="session-form-toggle" onClick={this.changeForm}>
+              Not a member? Sign Up!
+            </span>
           </div>
         </form>
       </div>
@@ -136,8 +167,15 @@ class Header extends React.Component {
               placeholder="Password"
             />
             <button className="form-buttons register-button">Register</button>
-            <button onClick={this.demoLogin} className="form-buttons demo-button">Demo Login</button>
-            <span className="session-form-toggle" onClick={this.changeForm}>Login Instead</span>
+            <button
+              onClick={this.demoLogin}
+              className="form-buttons demo-button"
+            >
+              Demo Login
+            </button>
+            <span className="session-form-toggle" onClick={this.changeForm}>
+              Login Instead
+            </span>
           </div>
         </form>
       </div>
@@ -145,11 +183,12 @@ class Header extends React.Component {
 
     const registerModal = this.props.currentUserId ? null : showform;
 
-    
     const sessionButtons = this.props.currentUserId ? (
       <div className="session-buttton-container">
         <div className="logout-container">
-          <h6 className="welcome-user">Hello,&nbsp;{this.props.currentUser.name}!</h6>
+          <h6 className="welcome-user">
+            Hello,&nbsp;{this.props.currentUser.name}!
+          </h6>
           <button onClick={this.props.logout} className="session-button logout">
             Log Out
           </button>

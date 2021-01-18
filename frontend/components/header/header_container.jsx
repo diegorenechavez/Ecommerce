@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
   return {
     currentUserId: state.session.currentUser,
     currentUser: state.entities.users[state.session.currentUser],
-  };
+  }; 
 };
 
 const mapDispatchToProps = (dispatch) => {

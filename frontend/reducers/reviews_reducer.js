@@ -11,7 +11,6 @@ const reviewsReducer = (oldState = {}, action) => {
     switch (action.type) {
         case RECEIVED_ALL_REVIEWS:
             return action.reviews
-            
         case RECEIVED_USER_REVIEWS:
             newState = action.reviews;
             return newState;

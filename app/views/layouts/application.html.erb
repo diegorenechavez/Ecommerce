@@ -19,6 +19,7 @@
   window.packagingURL = "<%= image_url('packaging.png') %>";
   window.emptyHeartURL = "<%= image_url('empty-heart.png') %>";
   window.fullHeartURL = "<%= image_url('full-heart.png') %>";
+  window.learnMoreURL = "<%= image_url('learnmore.png') %>";
   
 </script>
     <%if current_user %>
@@ -26,7 +27,8 @@
   window.currentUser = {
     "id": "<%= current_user.id%>",
     "username": "<%= current_user.username%>",
-    "email": "<%= current_user.email%>"
+    "email": "<%= current_user.email%>",
+    "name": "<%= current_user.name%>"
   };
   </script>
 <%end%>
