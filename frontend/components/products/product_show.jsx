@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../header/header_container";
-import ReviewsIndexContainer from "../reviews/reviews_index_container"
-import ReviewsIndexCon from "../reviews/reviews_index"
-import ReviewIndex from "../reviews/reviews_index"
+import ReviewIndex from "../reviews/reviews_index_container";
+// import ReviewIndex from "../reviews/reviews_index"
 
 class ProductShow extends React.Component {
   constructor(props) {
@@ -14,11 +13,16 @@ class ProductShow extends React.Component {
     };
     this.setDescription = this.setDescription.bind(this);
     this.setInstructions = this.setInstructions.bind(this);
+    this.goBack = this.goBack.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchProduct(this.props.match.params.productId);
-    this.props.fetchReviews(this.props.match.params.productId)
+    this.props.fetchReviews(this.props.match.params.productId);
+  }
+
+  goBack() {
+    this.props.history.goBack();
   }
 
   likeItem() {
@@ -54,6 +58,12 @@ class ProductShow extends React.Component {
       );
     return (
       <div className="product-show-container">
+        <div className="back-button-wrapper">
+          <button className="back-button" onClick={() => this.goBack()}>
+            ⟵{" "}
+          </button>
+        </div>
+
         <section className="product-display-container">
           <div className="product-display">
             <div className="product-image-review">
@@ -117,7 +127,18 @@ class ProductShow extends React.Component {
           </div>
         </section>
         {/* <hr className="style-8"/> */}
+        <h2 className="review-header">Reviews</h2>
+        <div className="create-review-button">
+          <Link to={`/products/${product.id}/review`}>
+            <button className="index-cart-button review-button">
+              Write A Review
+            </button>
+          </Link>
+        </div>
         <hr className="seperator" />
+        <div className="reviews-container">
+          <ReviewIndex productId={this.props.product.id} />
+        </div>
         <section className="mid-show-page">
           <div className="packagin-container">
             <div className="packaging-blurb">
@@ -137,12 +158,11 @@ class ProductShow extends React.Component {
           </div>
           {/* {this.reviews} */}
         </section>
-
         {/* <ReviewsIndexContainer product={product} /> */}
-        <ReviewIndex className="SEE MEEE" reviews={this.props.reviews} fetchReviews={this.props.fetchReviews} productId={this.props.product.id}/>
-        {console.log(
+        {/* <ReviewIndex className="SEE MEEE" reviews={this.props.reviews} fetchReviews={this.props.fetchReviews} productId={this.props.product.id}/> */}
+        {/* {console.log(
           <ReviewIndex className="SEE MEEE" reviews={this.props.reviews} />
-        )}
+        )} */}
       </div>
     );
   }

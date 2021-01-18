@@ -4,14 +4,14 @@ class Api::ReviewsController < ApplicationController
         #     @reviews = Review.where(author_id: params[:user_id])
         
         # elsif params.has_key?(:product_id)
-        #     @reviews = Review.where(product_id: params[:product_id])
+            @reviews = Review.where(product_id: params[:product_id])
         #     # @average_rating = @reviews.map{|review| review.rating}.sum/@reviews.length
+                render :index
         # else
         
         # end
        
-        @reviews = Review.all
-        render :index
+        # @reviews = Review.all
     end
 
     def show
@@ -40,6 +40,6 @@ class Api::ReviewsController < ApplicationController
 
     private
     def review_params
-        params.require(:review).permit(:body, :rating, :author_id, :business_id)
+        params.require(:review).permit(:body, :rating, :author_id, :product_id, :title)
     end
 end

@@ -8,12 +8,14 @@ import HairContainer from "../components/products/hair_container"
 import BodyContainer from "../components/products/body_container"
 import FaceContainer from "../components/products/face_container"
 import ProductContainer from "../components/products/product_show_container"
+import CreateReviewContainer from "../components/reviews/create_review_container";
 
 const App = () => {
   return (
     <div>
       <HeaderContainer />
       <Switch>
+        <ProtectedRoute exact path="/products/:productId/review" component={CreateReviewContainer} />
         <ProtectedRoute exact path="/products/:productId" component={ProductContainer} />
         <ProtectedRoute exact path="/hair" component={HairContainer} />
         <ProtectedRoute exact path="/body" component={BodyContainer} />
