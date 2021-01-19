@@ -15,6 +15,12 @@ const ProductItem = (props) => {
     setPicture(props.product.photoUrls[0]);
   };
 
+  const addToCart = (userId, productId) => { 
+    productId = parseInt(productId,10)
+    userId = parseInt(userId,10)
+    props.createCartItem(userId, productId)
+  }
+
   return (
     <div className="featured">
       <div className="product">

@@ -32,6 +32,8 @@ class CreateReview extends React.Component {
     this.props.fetchProduct(this.props.productId);
   }
 
+  
+
   render() {
    
 

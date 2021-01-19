@@ -7,6 +7,8 @@ import {
 } from "../../actions/session_actions.js";
 // import Header from "./header";
 import Header from "./header_component";
+import { createCart} from "../../actions/cart_actions"
+import { fetchCart} from "../../actions/cart_actions"
 
 const mapStateToProps = (state) => {
   return {
@@ -21,6 +23,10 @@ const mapDispatchToProps = (dispatch) => {
     login: (user) => dispatch(login(user)),
     clearErrors: () => dispatch(clearErrors()),
     logout: () => dispatch(logout()),
+    createCart: (userId) => dispatch((createCart(userId))),
+    fetchCart: (userId)=> dispatch((fetchCart(userId)))
+    
+
   };
 };
 

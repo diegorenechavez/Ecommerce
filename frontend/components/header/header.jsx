@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../search_bar/search_bar";
 
@@ -33,6 +33,7 @@ const Header = ({ currentUserId, logout, login, signup }) => {
       console.log("Passwords did not match")
     }
   }
+  
   
 
   const update = function(field){

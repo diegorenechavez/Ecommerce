@@ -26,10 +26,13 @@ class Header extends React.Component {
       this.freezePage();
    
     }
+    ;
   }
 
   componentDidUpdate() { 
-     this.unfreezePage();
+    this.unfreezePage();
+    ;
+    
   }
 
   freezePage() {
@@ -40,7 +43,8 @@ class Header extends React.Component {
 
   unfreezePage() {
       // this.setState({ freezePage: false });
-      document.body.style.overflow = "unset";
+    document.body.style.overflow = "unset";
+    
     
   }
 
@@ -65,9 +69,11 @@ class Header extends React.Component {
         login({
           username: "AdventureKid",
           password: "password",
-        });
+        }).then(this.props.fetchCart(this.props.currentUserId));
       }
     }, 50);
+   ;
+  
   }
 
   update(field) {
@@ -85,7 +91,11 @@ class Header extends React.Component {
       username: this.state.username,
       password: this.state.password,
     };
-    this.props.signup(user).then((user) => this.props.login(user)).then(this.unfreezePage());
+    this.props
+      .signup(user)
+      .then((user) => this.props.login(user))
+      .then(this.unfreezePage())
+      ;
   }
 
   changeForm() {

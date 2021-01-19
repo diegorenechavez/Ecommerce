@@ -23,19 +23,24 @@ class User < ApplicationRecord
    validates :name, presence: true
    
    has_one :cart,
+   primary_key: :id,
    foreign_key: :user_id,
-   class_name: :Cart,
-   primary_key: :id
+   class_name: :Cart
 
    has_many :liked_items,
+   primary_key: :id,
    foreign_key: :user_id,
-   class_name: :LikedItems,
-   primary_key: :id
+   class_name: :LikedItems
 
      has_many :reviews,
     primary_key: :id,
     foreign_key: :author_id,
     class_name: :Review
+
+#     has_many :cart_items,
+#     primary_key: :id,
+#     foreign_key: :user_id,
+#     class_name: :Cart_Item
    
 
    after_initialize :ensure_session_token

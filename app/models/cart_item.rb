@@ -6,22 +6,26 @@
 #  quantity   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  cart_id    :integer          not null
+#  cart_id    :integer
 #  product_id :integer          not null
 #
 class CartItem < ApplicationRecord
     validates :quantity, presence: true
 
     belongs_to :product,
-    class_name: :Product,
+    primary_key: :id,
     foreign_key: :product_id,
-    primary_key: :id
+    class_name: :Product
+
+    # belongs_to :user,
+    # primary_key: :id,
+    # foreign_key: :user_id,
+    # class_name: :User
 
     belongs_to :cart,
-    class_name: :Cart,
+    primary_key: :id,
     foreign_key: :cart_id,
-    primary_key: :id
-
+    class_name: :Cart
 
 
 end

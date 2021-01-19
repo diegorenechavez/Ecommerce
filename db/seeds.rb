@@ -10,6 +10,7 @@ User.destroy_all
 Product.destroy_all
 Review.destroy_all
 User_1 = User.create(name:"Morty", username:"AdventureKid", email:"morty@rick.com", password:"password")
+cart_1 = Cart.create(user_id:1)
 product_1 = Product.create(name: "Big Shampoo", category:"hair", price:25, size:10, description:"Over half the base of Big Shampoo is made with sea salt to help give massive volume to hair in need of a boost. Sea salt is also full of minerals and de-greases hair, removing dead skin cells and dirt without stripping natural oils for a fresh, squeaky clean feeling. We balance the sea salt with seaweed infusion and extra virgin coconut oil for soft, nourished locks. Finally, fresh citrus juices are squeezed in for incredible shine. It's no wonder this one's a best-seller!", instruction:"Apply a small amount to the hair, work into a lather, then rinse thoroughly." )
 # product_2 = Product.create(name: "Dirty Body Wash", category:"featured", price:10, size:16, description:"Like a cool dip in a mountain spring, Dirty leaves you feeling invigorated thanks to refreshing spearmint and menthol crystals. We've also loaded this self-preserving gel with vegetarian glycerin and sea salt to soften your skin while you're washing up", instruction:"Get naked, hop in the shower and lather up." )
 product_3 = Product.create(name: "Olive Branch", category:"featured", price:10, size:16, description:"Get in a lather with the delicate perfume of a Mediterranean orange grove.", instruction:"Get naked, hop in the shower and lather up."  )
