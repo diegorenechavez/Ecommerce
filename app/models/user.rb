@@ -15,30 +15,30 @@
 #  index_users_on_username       (username) UNIQUE
 #
 class User < ApplicationRecord
-   attr_reader :password
-   validates :username, :session_token, presence: true, uniqueness: true
-   validates :email, presence:true, uniqueness:true
-   validates :password, length: { minimum: 6 , allow_nil: true}
-   validates :password_digest, presence: true
-   validates :name, presence: true
-   
-   has_one :cart,
-   foreign_key: :user_id,
-   class_name: :Cart,
-   primary_key: :id
+     attr_reader :password
+     validates :username, :session_token, presence: true, uniqueness: true
+     validates :email, presence:true, uniqueness:true
+     validates :password, length: { minimum: 6 , allow_nil: true}
+     validates :password_digest, presence: true
+     validates :name, presence: true
 
-   has_many :liked_items,
-   foreign_key: :user_id,
-   class_name: :LikedItems,
-   primary_key: :id
+     has_many :liked_items,
+     foreign_key: :user_id,
+     class_name: :LikedItems,
+     primary_key: :id
 
      has_many :reviews,
-    primary_key: :id,
-    foreign_key: :author_id,
-    class_name: :Review
-   
+     primary_key: :id,
+     foreign_key: :author_id,
+     class_name: :Review
 
-   after_initialize :ensure_session_token
+     has_many :cart_items,
+     primary_key: :id,
+     foreign_key: :user_id,
+     class_nme: :CartItem,
+
+
+     after_initialize :ensure_session_token
 
    def self.find_by_credentials(username, password)
        user = User.find_by(username: username)

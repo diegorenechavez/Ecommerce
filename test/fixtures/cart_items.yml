@@ -6,8 +6,8 @@
 #  quantity   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  cart_id    :integer          not null
 #  product_id :integer          not null
+#  user_id    :integer          not null
 #
 
 # This model initially had no columns defined. If you add columns to the

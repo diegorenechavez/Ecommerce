@@ -19,13 +19,15 @@ class Product < ApplicationRecord
     validates :name, presence: true 
 
 
-    has_one :cart,
-    through: :cart_items
-
     has_many :reviews,
     primary_key: :id,
     foreign_key: :product_id,
     class_name: :Review
+
+    has_one :cart_item,
+    primary_key: :id,
+    foreign_key: :product_id,
+    class_name: :CartItem
 
     has_many_attached :photos
 end
