@@ -26,6 +26,7 @@ class CartIndex extends React.Component {
             />
           ))}
         </div>
+        <button className="checkout-button">Checkout</button>
       </div>
     );
   }

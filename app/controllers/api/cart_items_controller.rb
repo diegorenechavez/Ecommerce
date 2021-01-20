@@ -12,11 +12,11 @@ class Api::CartItemsController < ApplicationController
   end
 
   def create
-    # current_user.cart_items.each do |cartItem|
-    #   if cartItem.productId == params[:cartItem][:product_id]
-    #     cartItem.quantity += 1
-    #     cartItem.save!
-    #     @cart_item = cartItem
+    # current_user.cart_items.each do |cart_item|
+    #   if cart_item.productId == params[:cart_item][:product_id]
+    #     cart_item.quantity += 1
+    #     cart_item.save!
+    #     @cart_item = cart_item
     #     render :show
     #   else
     #     @cart_item = CartItem.create(cart_item_params)
