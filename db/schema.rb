@@ -44,6 +44,13 @@ ActiveRecord::Schema.define(version: 2021_01_19_230319) do
     t.integer "user_id", null: false
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "total"
+  end
+
   create_table "liked_items", force: :cascade do |t|
     t.integer "product_id", null: false
     t.integer "user_id", null: false
