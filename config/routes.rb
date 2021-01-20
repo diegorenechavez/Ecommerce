@@ -4,15 +4,14 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :users, only:[:create, :show] do
       resources :reviews, only:[:index, :destroy]
-      resources :carts, only:[:show]
+
       resources :liked_items, only:[:create, :show, :index, :destroy]
     end 
     resource :session, only:[:create, :destroy]
     resources :products, only:[:show, :index] do
       resources :reviews, only:[:create, :index]
     end
-    resources :carts, only:[:show]
-    resources :cart_items, only:[:create, :edit, :destroy, :index, :show] do 
+    resources :cart_items, only:[:create, :destroy, :index, :show] do 
       resources :products, only:[:show, :index]
     end 
     get 'products/splash/:category', :to => 'products#index'
