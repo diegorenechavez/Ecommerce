@@ -15,6 +15,17 @@ const ProductItem = (props) => {
     setPicture(props.product.photoUrls[0]);
   };
 
+  const cart_item = () => { 
+    return {
+      user_id: parseInt(props.currentUserId),
+      product_id: parseInt(props.product.id),
+      quantity: parseInt(1)
+    }
+   
+  }
+
+  
+
   return (
     <div className="featured">
       <div className="product">
@@ -34,7 +45,7 @@ const ProductItem = (props) => {
             <em id="index-size">{props.product.size}.oz</em>{" "}
           </h4>
         </div>
-        <button className="index-cart-button">Add To Cart</button>
+        <button onClick={() => props.createCartItem(cart_item())} className="index-cart-button">Add To Cart</button>
       </div>
     </div>
   );

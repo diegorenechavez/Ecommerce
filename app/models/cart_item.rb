@@ -10,7 +10,7 @@
 #  user_id    :integer          not null
 #
 class CartItem < ApplicationRecord
-    validates :quantity, presence: true
+    # validates :quantity, presence: true
 
     belongs_to :user,
     primary_key: :id,
