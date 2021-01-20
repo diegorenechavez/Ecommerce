@@ -7,16 +7,19 @@ export const fetchAllCartItems = () => {
 
 
 
-export const createCartItem = (cartItem) => {
+export const createCartItem = (cart_item) => {
     return $.ajax({
-        mehtod: `POST`,
-        url: `/api/cart_items`
-    })
+        url: `/api/cart_items`,
+      method: "POST",
+      data: {
+        cart_item
+      },
+    });
 }
 
 export const deleteCartItem = (cartItemId) => {
     return $.ajax({
-        mehtod: `DELETE`,
+        method: `DELETE`,
         url: `/api/cart_items/${cartItemId}`
     })
 }

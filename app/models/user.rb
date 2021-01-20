@@ -35,7 +35,7 @@ class User < ApplicationRecord
      has_many :cart_items,
      primary_key: :id,
      foreign_key: :user_id,
-     class_nme: :CartItem,
+     class_name: :CartItem
 
 
      after_initialize :ensure_session_token

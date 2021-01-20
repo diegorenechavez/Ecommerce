@@ -49,3 +49,8 @@ review_3 = Review.create(title: "My Favorite Find!", rating: 5, author_id:1, pro
 # review_8 = Review.create(title: "My Favorite Find!", rating: 5, author_id:1, product_id:4, body:"")
 review_9 = Review.create(title: "My Favorite Find!", rating: 5, author_id:1, product_id:4, body:"I loved this product! It smells more like vanilla than Bananas if you ask me, but theres still a slight banana hint. The color is fun too, its bright yellow. Will buy again in a bigger size")
 revew_10 = Review.create(title: "who smells so good?", rating: 4, author_id:1, product_id:3, body: "when you are used to silicon filled conditioner it's definitely a change, hard to get used to your hair not feeling silky smooth in the shower, but definitely worth it. i found it wasn't moisturizing enough for my dry frizzy hair, that is UNTIL i brushed it through my hair in the shower with a comb, i think it really helped penetrate my hair further. plus the sweet vanilla scent is to die for & you will get compliments often! after my hair dried it was sooo shiny & light feeling, so with a little extra effort i say it's worth it.")
+
+
+
+
+cart_item_1 = CartItem.create(user_id: 1, product_id:3, quantity:1)

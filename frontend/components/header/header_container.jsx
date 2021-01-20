@@ -6,6 +6,7 @@ import {
   logout,
 } from "../../actions/session_actions.js";
 // import Header from "./header";
+import { fetchAllCartItems} from "../../actions/cart_item_actions"
 import Header from "./header_component";
 
 const mapStateToProps = (state) => {
@@ -21,6 +22,7 @@ const mapDispatchToProps = (dispatch) => {
     login: (user) => dispatch(login(user)),
     clearErrors: () => dispatch(clearErrors()),
     logout: () => dispatch(logout()),
+    fetchAllCartItems: () => dispatch(fetchAllCartItems())
   };
 };
 

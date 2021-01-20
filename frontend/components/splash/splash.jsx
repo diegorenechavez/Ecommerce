@@ -45,7 +45,7 @@ class Splash extends React.Component {
     ) : null;
     
     const data = this.props.products[this.props.products.length - 1] ? <div className="section">
-      {this.props.products.map((product) => (<ProductItem product={product} key={product.id} />))}
+      {this.props.products.map((product) => (<ProductItem product={product} createCartItem={this.props.createCartItem} key={product.id} currentUserId={this.props.currentUserId}/>))}
     </div> : <Spinner />
     return (
       <>

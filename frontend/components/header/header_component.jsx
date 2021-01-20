@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../search_bar/search_bar";
+import CartIndexContainer from "../cart/cart_index_container";
 
 class Header extends React.Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class Header extends React.Component {
       username: "",
       password: "",
       showLogin: false,
-      freeze: true
+      freeze: true,
+      showCart: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,29 +21,30 @@ class Header extends React.Component {
     this.demoLogin = this.demoLogin.bind(this);
     this.freezePage = this.freezePage.bind(this);
     this.unfreezePage = this.unfreezePage.bind(this);
+    this.showCartPreview = this.showCartPreview.bind(this);
   }
 
   componentDidMount() {
     if (!this.props.currentUserId) {
       this.freezePage();
-   
     }
   }
 
-  componentDidUpdate() { 
-     this.unfreezePage();
+  componentDidUpdate() {
+    this.unfreezePage();
+    if (this.props.currentUserId) {
+      this.props.fetchAllCartItems();
+    }
   }
 
   freezePage() {
-        document.body.style.overflow ="hidden"
-      // this.setState({ freezePage: true });
+    document.body.style.overflow = "hidden";
+    // this.setState({ freezePage: true });
   }
-  
 
   unfreezePage() {
-      // this.setState({ freezePage: false });
-      document.body.style.overflow = "unset";
-    
+    // this.setState({ freezePage: false });
+    document.body.style.overflow = "unset";
   }
 
   demoLogin(e) {
@@ -85,7 +88,10 @@ class Header extends React.Component {
       username: this.state.username,
       password: this.state.password,
     };
-    this.props.signup(user).then((user) => this.props.login(user)).then(this.unfreezePage());
+    this.props
+      .signup(user)
+      .then((user) => this.props.login(user))
+      .then(this.unfreezePage());
   }
 
   changeForm() {
@@ -93,6 +99,14 @@ class Header extends React.Component {
       this.setState({ showLogin: false });
     } else {
       this.setState({ showLogin: true });
+    }
+  }
+
+  showCartPreview() {
+    if (this.state.showCart) {
+      this.setState({ showCart: false });
+    } else {
+      this.setState({ showCart: true });
     }
   }
 
@@ -182,10 +196,22 @@ class Header extends React.Component {
     );
 
     const registerModal = this.props.currentUserId ? null : showform;
-
+    const cartPreview = this.state.showCart ?
+      <div className="cart">
+        <button onClick={()=> this.showCartPreview()} className="close-cart-button">X</button>
+        <CartIndexContainer />
+      </div> : null;
     const sessionButtons = this.props.currentUserId ? (
       <div className="session-buttton-container">
         <div className="logout-container">
+          <img
+            className="cart-icon"
+            onClick={() => this.showCartPreview()}
+            alt=""
+            src={window.cartIconURL}
+          />
+
+          {cartPreview}
           <h6 className="welcome-user">
             Hello,&nbsp;{this.props.currentUser.name}!
           </h6>
