@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../search_bar/search_bar";
 import CartIndexContainer from "../cart/cart_index_container";
+import CartNumber from "../cart/cart_number_container";
 
 class Header extends React.Component {
   constructor(props) {
@@ -194,16 +195,23 @@ class Header extends React.Component {
         </form>
       </div>
     );
-
+    
     const registerModal = this.props.currentUserId ? null : showform;
-    const cartPreview = this.state.showCart ?
-      <div className="cart">
-        <button onClick={()=> this.showCartPreview()} className="close-cart-button">X</button>
+    const cartPreview = this.state.showCart ? (
+      <div className="cart " onClick={() => this.showCartPreview()}>
+        <button
+          onClick={() => this.showCartPreview()}
+          className="close-cart-button"
+        >
+          X
+        </button>
         <CartIndexContainer />
-      </div> : null;
+      </div>
+    ) : null;
     const sessionButtons = this.props.currentUserId ? (
       <div className="session-buttton-container">
         <div className="logout-container">
+          <CartNumber />
           <img
             className="cart-icon"
             onClick={() => this.showCartPreview()}

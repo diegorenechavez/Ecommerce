@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ProgressPlugin } from "webpack";
+
 
 const CartIndexItem = (props) => {
+  if (!props.cartItem.photoUrls) return null;
   return (
     <div className="cart-item">
       <Link to={`/products/${props.cartItem.productId}`}>
@@ -19,8 +20,9 @@ const CartIndexItem = (props) => {
           >
             Remove
           </button>
-          {/* <div>X&nbsp;{props.cartItem.quantity}</div> */}
         </div>
+          <div>Qty:&nbsp;{props.cartItem.quantity}</div>
+        
       </div>
     </div>
   );

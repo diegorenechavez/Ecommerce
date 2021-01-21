@@ -43,7 +43,9 @@ class Splash extends React.Component {
         </div>
       </div>
     ) : null;
-    
+    const gradient = this.props.currentUserId ? null : (
+      <div className="gradient"></div>
+    );
     const data = this.props.products[this.props.products.length - 1] ? <div className="section">
       {this.props.products.map((product) => (<ProductItem product={product} createCartItem={this.props.createCartItem} key={product.id} currentUserId={this.props.currentUserId}/>))}
     </div> : <Spinner />
@@ -68,31 +70,43 @@ class Splash extends React.Component {
         </div>
         <div className="new-features">
           <h2 className="heading">New Products</h2>
-          <hr className="style-six"/>
+          <hr className="style-six" />
           {data}
-          
         </div>
         <section className="below-the-fold">
           <div className="product-promotion">
             <div className="show-container">
-            <img src={window.productURL} alt=""  className="product-image milk-image"/>
-              <button className="index-cart-button learn-more-button" onClick={()=> this.showDiv()}>Learn More</button>
+              <img
+                src={window.productURL}
+                alt=""
+                className="product-image milk-image"
+              />
+              <button
+                className="index-cart-button learn-more-button"
+                onClick={() => this.showDiv()}
+              >
+                Learn More
+              </button>
             </div>
             <div className="product-blurb">
               <h2 className="product-index-name milk">Super Milk</h2>
-              <h4 className="product-index-price milk-description">Conditioning Hair Primer</h4>
-              Perfect for curls, coils and textured hair, this light, lotion-y leave-in is a great first step in your post-shower routine or can be used as a refresher between washes. Doing the LOC method? This is your first step.
+              <h4 className="product-index-price milk-description">
+                Conditioning Hair Primer
+              </h4>
+              Perfect for curls, coils and textured hair, this light, lotion-y
+              leave-in is a great first step in your post-shower routine or can
+              be used as a refresher between washes. Doing the LOC method? This
+              is your first step.
             </div>
-            <img src={window.promoURL} alt="" className="promo"/>
+            <img src={window.promoURL} alt="" className="promo" />
           </div>
           <img src={window.footBannerURL} alt="" className="foot-banner" />
           <div className="footer">
             Contact Me | Portfolio | LinkedIn
-             <img src={window.meURL} alt="" className="me" />
-            
-          </div >
+            <img src={window.meURL} alt="" className="me" />
+          </div>
         </section>
-        
+        {gradient}
       </>
     );
   }
