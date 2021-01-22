@@ -100,11 +100,11 @@ class Splash extends React.Component {
             </div>
             <img src={window.promoURL} alt="" className="promo" />
           </div>
-          <img src={window.footBannerURL} alt="" className="foot-banner" />
+          {/* <img src={window.footBannerURL} alt="" className="foot-banner" />
           <div className="footer">
             Contact Me | Portfolio | LinkedIn
             <img src={window.meURL} alt="" className="me" />
-          </div>
+          </div> */}
         </section>
         {gradient}
       </>

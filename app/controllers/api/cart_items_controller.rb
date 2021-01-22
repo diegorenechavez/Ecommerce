@@ -12,32 +12,21 @@ class Api::CartItemsController < ApplicationController
   end
 
   def create
-    # current_user.cart_items.each do |cart_item|
-    #   if cart_item.productId == params[:cart_item][:product_id]
-    #     cart_item.quantity += 1
-    #     cart_item.save!
-    #     @cart_item = cart_item
-    #     render :show
-    #   else
-    #     @cart_item = CartItem.create(cart_item_params)
-    #     if @cart_item.save!
-    #       render :show
-    #     else
-    #       render :json ['Invalid Product'], status: 422
-    #     end
-    #   end
-    # end
-    # render :show
-    
-    
-    @cart_item = CartItem.create(cart_item_params)
-    
-    if @cart_item.save
-      
-      render :show
-    else
-      render json: @cart_item.errors.full_messages, status: 404
-    end
+    current_user.cart_items.each do |cart_item|
+      if cart_item.product_id == (params[:cart_item][:product_id]).to_i
+        cart_item.quantity += 1
+        cart_item.save!
+        @cart_item = cart_item
+        render :show
+        return
+      end
+    end 
+      @cart_item = CartItem.create(cart_item_params)
+      if @cart_item.save!
+        render :show
+      else
+        render :json ['Invalid Product'], status: 422
+      end
   end
 
   def destroy

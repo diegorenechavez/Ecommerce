@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps) => {
         return {
             reviews: Object.values(state.entities.reviews),
             //ratings:  Object.values(state.entities.reviews).map(review => (review.rating)),
-            productId: ownProps.productId
+            productId: ownProps.productId,
     }   
 }
 

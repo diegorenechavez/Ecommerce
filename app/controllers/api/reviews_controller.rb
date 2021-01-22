@@ -1,17 +1,16 @@
 class Api::ReviewsController < ApplicationController
     def index
-        # if params.has_key?(:user_id)
-        #     @reviews = Review.where(author_id: params[:user_id])
-        
-        # elsif params.has_key?(:product_id)
+        if params.has_key?(:user_id)
+            @reviews = Review.where(author_id: params[:user_id])
+            render :index
+        elsif params.has_key?(:product_id)
             @reviews = Review.where(product_id: params[:product_id])
         #     # @average_rating = @reviews.map{|review| review.rating}.sum/@reviews.length
                 render :index
-        # else
-        
-        # end
-       
-        # @reviews = Review.all
+        else
+            @reviews = Review.all
+            render :index
+        end
     end
 
     def show

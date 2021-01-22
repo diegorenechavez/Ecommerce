@@ -2,7 +2,7 @@ import Hair from './hair';
 import { connect } from 'react-redux'
 import { fetchAllProducts } from '../../actions/product_actions';
 
-const mapStatetToProps = state => { 
+const mapStateToProps = (state, ownProps) => { 
     return {
         products: Object.values(state.entities.products)
     }
@@ -15,4 +15,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStatetToProps, mapDispatchToProps)(Hair)
+export default connect(mapStateToProps, mapDispatchToProps)(Hair)
