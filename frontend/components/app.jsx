@@ -10,6 +10,8 @@ import FaceContainer from "../components/products/face_container"
 import ProductContainer from "../components/products/product_show_container"
 import CreateReviewContainer from "../components/reviews/create_review_container";
 import CartContainer from "../components/cart/cart_show_container"
+import ProfileContainer from "../components/users/profile_container"
+import Footer from "../components/footer"
 
 const App = () => {
   return (
@@ -18,6 +20,7 @@ const App = () => {
       <Switch>
         <ProtectedRoute exact path="/products/:productId/review" component={CreateReviewContainer} />
         <ProtectedRoute exact path="/products/:productId" component={ProductContainer} />
+        <ProtectedRoute exact path="/users/:userId" component={ProfileContainer} />
         <ProtectedRoute exact path="/hair" component={HairContainer} />
         <ProtectedRoute exact path="/body" component={BodyContainer} />
         <ProtectedRoute exact path="/face" component={FaceContainer} />
@@ -27,6 +30,7 @@ const App = () => {
         {/* <AuthRoute exact path="/splash" component={LandingContainer} /> */}
         <Redirect to="/" />
       </Switch>
+      <Footer component={Footer} />
     </div>
   );
 };

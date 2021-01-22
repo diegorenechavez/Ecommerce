@@ -15,7 +15,7 @@ const CartIndexItem = (props) => {
           <div className="cart-item-price">${props.cartItem.price}&nbsp;</div>&nbsp;|&nbsp;
           <div className="cart-item-size">{props.cartItem.size}oz</div>
           <button
-            className="cart-item-remove-button "
+            className="cart-item-remove-button  "
             onClick={() => props.deleteCartItem(props.cartItem.cartItemId)}
           >
             Remove

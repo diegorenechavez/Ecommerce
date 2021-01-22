@@ -220,9 +220,11 @@ class Header extends React.Component {
           />
 
           {cartPreview}
+          <Link className="profile-link" to={`/users/${this.props.currentUserId}`}>Profile</Link>
           <h6 className="welcome-user">
             Hello,&nbsp;{this.props.currentUser.name}!
           </h6>
+
           <button onClick={this.props.logout} className="session-button logout">
             Log Out
           </button>
@@ -264,6 +266,7 @@ class Header extends React.Component {
           </Link>
         </div>
         {registerModal}
+        <div className="disclaimer">*All Images are property of LUSH, and are soley used for demonstration purposes</div>
       </nav>
     );
   }

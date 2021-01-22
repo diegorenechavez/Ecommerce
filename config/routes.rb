@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'static_pages#root'
   namespace :api, defaults: { format: :json } do
     resources :users, only:[:create, :show] do
-      resources :reviews, only:[:index, :destroy]
+      resources :reviews, only:[:index]
 
       resources :liked_items, only:[:create, :show, :index, :destroy]
     end 
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :products, only:[:show, :index] do
       resources :reviews, only:[:create, :index]
     end
+    resources :reviews, only:[:show, :update, :destroy]
     resources :cart_items, only:[:create, :destroy, :index, :show] do 
       resources :products, only:[:show, :index]
     end 
