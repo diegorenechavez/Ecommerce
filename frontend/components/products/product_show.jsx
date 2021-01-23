@@ -10,10 +10,12 @@ class ProductShow extends React.Component {
     this.state = {
       infoFlag: "description",
       liked: false,
+      showFeedBack:false
     };
     this.setDescription = this.setDescription.bind(this);
     this.setInstructions = this.setInstructions.bind(this);
     this.goBack = this.goBack.bind(this);
+    this.addToCart = this.addToCart.bind(this)
   }
 
   componentDidMount() {
@@ -47,6 +49,20 @@ class ProductShow extends React.Component {
     this.setState({ infoFlag: "instructions" });
   }
 
+  cart_item () {
+    return {
+      user_id: parseInt(this.props.currentUserId),
+      product_id: parseInt(this.props.product.id),
+      quantity: parseInt(1)
+    }
+
+  }
+  addToCart() { 
+    this.setState({ showFeedBack: true })
+    this.props.createCartItem(this.cart_item())
+    setInterval(() => this.setState({showFeedBack:false}), 1500)
+  }
+
   render() {
     if (!this.props.product) {
       return null;
@@ -54,14 +70,9 @@ class ProductShow extends React.Component {
     if (!this.props.reviews) {
       return null;
     }
-    const cart_item = () => {
-      return {
-        user_id: parseInt(this.props.currentUserId),
-        product_id: parseInt(this.props.product.id),
-        quantity: parseInt(1)
-      }
-
-    }
+    const feedback = this.state.showFeedBack ? (
+      <h3 className="cart-feed-back-show">Added To Cart!</h3>
+    ) : null;
     const { product } = this.props;
     const heart = this.state.liked ? window.fullHeartURL : window.emptyHeartURL;
     const info =
@@ -102,9 +113,10 @@ class ProductShow extends React.Component {
                 <h4 className="product-show-price">Price: ${product.price} </h4>
                 |<h4 className="product-show-size">Size: {product.size}.oz</h4>
               </div>
-              <button className="index-cart-button show-cart-button" onClick={() => this.props.createCartItem(cart_item())}>
+              <button className="index-cart-button show-cart-button" onClick={() => this.addToCart()}>
                 Add To Cart
               </button>
+              {feedback}
               <hr className="style-7" />
               <div className="free-shipping">
                 Free Shipping on Orders over $50

@@ -5,8 +5,9 @@ import { createCartItem} from "../../actions/cart_item_actions"
 
 const mapStateToProps = (state, ownProps) => { 
     return {
-        products: Object.values(state.entities.products)
-    }
+      products: Object.values(state.entities.products),
+      currentUserId: state.session.currentUser,
+    };
 }
 
 
