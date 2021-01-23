@@ -29,5 +29,10 @@ class Product < ApplicationRecord
     foreign_key: :product_id,
     class_name: :CartItem
 
+    has_many :likes,
+    primary_key: :id,
+    foreign_key: :product_id,
+    class_name: :LikedItem
+
     has_many_attached :photos
 end

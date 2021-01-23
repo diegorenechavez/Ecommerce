@@ -9,9 +9,18 @@
 #  user_id    :integer          not null
 #
 class LikedItem < ApplicationRecord
+    validates :product_id, uniqueness:true
 
     belongs_to :user,
+    primary_key: :id,
     foreign_key: :user_id,
-    class_name: :User,
-    primary_key: :id
+    class_name: :User
+
+    belongs_to :product,
+    primary_key: :id,
+    foreign_key: :product_id,
+    class_name: :Product
+
+    
+
 end

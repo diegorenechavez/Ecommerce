@@ -12,9 +12,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchAllProducts: (category) => {
-      dispatch(fetchAllProducts(category));
-    },
+    fetchAllProducts: (category) =>  dispatch(fetchAllProducts(category)),
+    
     createCartItem: (cartItem) => dispatch(createCartItem(cartItem)),
   };
 };
