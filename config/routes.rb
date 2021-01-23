@@ -5,12 +5,14 @@ Rails.application.routes.draw do
     resources :users, only:[:create, :show] do
       resources :reviews, only:[:index]
 
-      resources :liked_items, only:[:create, :show, :index, :destroy]
+      resources :liked_items, only:[:index]
     end 
     resource :session, only:[:create, :destroy]
     resources :products, only:[:show, :index] do
+      # resources :liked_items, only:[:destroy]
       resources :reviews, only:[:create, :index]
     end
+    resources :liked_items, only:[:show, :create, :destroy]
     resources :reviews, only:[:show, :update, :destroy]
     resources :cart_items, only:[:create, :destroy, :index, :show] do 
       resources :products, only:[:show, :index]

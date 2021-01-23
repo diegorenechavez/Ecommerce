@@ -26,9 +26,15 @@ class ProductShow extends React.Component {
   }
 
   likeItem() {
+    let liked_item = {
+      user_id: parseInt(this.props.currentUserId),
+      product_id: parseInt(this.props.product.id)
+    }
     if (this.state.liked === false) {
+      this.props.createLikedItem(liked_item);
       this.setState({ liked: true });
     } else if (this.state.liked) {
+      // this.props.removeLikedItem(this.props.product.id);
       this.setState({ liked: false });
     }
   }

@@ -16,18 +16,20 @@ class UserReviewsIndex extends React.Component{
             return null
         }
         return (
-            <div className="user-review-index-container">
-                <ul>
-                    {this.props.reviews.map((review) => (
-                    <UserReviewIndexItem 
-                    key={review.id}
-                    review={review}
-                    removeReview={this.props.removeReview}
-                    productId={this.props.productId}/>))} 
-                </ul>
-                
-            </div>
-        )
+          <div className="user-review-index-container">
+            <h1 className="liked-page-banner">Your Reviews</h1>
+            <ul>
+              {this.props.reviews.map((review) => (
+                <UserReviewIndexItem
+                  key={review.id}
+                  review={review}
+                  removeReview={this.props.removeReview}
+                  productId={this.props.productId}
+                />
+              ))}
+            </ul>
+          </div>
+        );
     }
 }
 
