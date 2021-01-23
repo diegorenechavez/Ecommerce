@@ -198,7 +198,7 @@ class Header extends React.Component {
     
     const registerModal = this.props.currentUserId ? null : showform;
     const cartPreview = this.state.showCart ? (
-      <div className="cart " onClick={() => this.showCartPreview()}>
+      <div className="cart " >
         <button
           onClick={() => this.showCartPreview()}
           className="close-cart-button"

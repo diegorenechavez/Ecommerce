@@ -45,7 +45,12 @@ const ProductItem = (props) => {
             <em id="index-size">{props.product.size}.oz</em>{" "}
           </h4>
         </div>
-        <button onClick={() => props.createCartItem(cart_item())} className="index-cart-button">Add To Cart</button>
+        <button
+          onClick={() => props.createCartItem(cart_item())}
+          className="index-cart-button"
+        >
+          Add To Cart
+        </button>
       </div>
     </div>
   );

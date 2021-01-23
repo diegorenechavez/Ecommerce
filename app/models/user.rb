@@ -22,10 +22,10 @@ class User < ApplicationRecord
      validates :password_digest, presence: true
      validates :name, presence: true
 
-     has_many :liked_items,
+     has_many :likes,
+     primary_key: :id,
      foreign_key: :user_id,
-     class_name: :LikedItems,
-     primary_key: :id
+     class_name: :LikedItem
 
      has_many :reviews,
      primary_key: :id,
@@ -36,6 +36,12 @@ class User < ApplicationRecord
      primary_key: :id,
      foreign_key: :user_id,
      class_name: :CartItem
+
+     has_many :liked_products,
+     through: :likes,
+     source: :product
+
+
 
 
      after_initialize :ensure_session_token

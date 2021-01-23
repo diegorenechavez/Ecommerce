@@ -9,3 +9,63 @@
 .review-button2{
     margin-bottom: 25px;
 }
+
+.user-profile-container{
+        display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.avatar-image{
+width: 200px;
+}
+
+.user-info-container{
+        width: 100vw;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+}
+
+.user-info-username{
+    margin: 10px;
+    font-family: var(--styled-font);
+    font-size: 30px;
+    letter-spacing: 1px;
+}
+
+.user-info-name{
+    font-family: var(--functional-font);
+    margin-bottom: 10px;
+}
+
+.user-info-email{
+    font-family: var(--functional-font);
+    margin-bottom: 25px;
+    color: var(--main-green);
+}
+
+.user-options{
+    color: black;
+    width: fit-content;
+    background: grey;
+    display: flex;
+    border-radius: 15px;
+    padding: 4px;
+}
+
+.user-options > *{
+    width: 100px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--functional-font);
+    background: transparent;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+}
