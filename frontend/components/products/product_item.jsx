@@ -15,17 +15,24 @@ const ProductItem = (props) => {
     setPicture(props.product.photoUrls[0]);
   };
 
-  const cart_item = () => { 
+  const cart_item = () => {
     return {
       user_id: parseInt(props.currentUserId),
       product_id: parseInt(props.product.id),
-      quantity: parseInt(1)
-    }
-   
-  }
+      quantity: parseInt(1),
+    };
+  };
 
-  
+  const [confirm, setConfirm] = useState(false);
+  const addToCart = () => {
+    setConfirm(true);
+    props.createCartItem(cart_item());
+    setTimeout(() => setConfirm(false), 2000);
+  };
 
+  const feedback = confirm ? (
+    <h3 className="cart-feed-back">Added To Cart!</h3>
+  ) : null;
   return (
     <div className="featured">
       <div className="product">
@@ -45,12 +52,10 @@ const ProductItem = (props) => {
             <em id="index-size">{props.product.size}.oz</em>{" "}
           </h4>
         </div>
-        <button
-          onClick={() => props.createCartItem(cart_item())}
-          className="index-cart-button"
-        >
+        <button onClick={() => addToCart()} className="index-cart-button">
           Add To Cart
         </button>
+        {feedback}
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ class Hair extends React.Component {
     const  display  = this.props.products[this.props.products.length - 1] ? 
       (<div className="product-index">
         {this.props.products.map((product) => (
-          <ProductItem product={product} key={product.id} />
+          <ProductItem product={product} key={product.id} createCartItem={this.props.createCartItem} currentUserId={this.props.currentUserId} />
         ))}
       </div>) :
       <div className="spinner-container">
