@@ -3,6 +3,7 @@
 //   height: 300px;
 // }
 
+
 .hero-div {
   background-image: image-url("hero_banner.png");
   background-repeat: no-repeat;
@@ -15,11 +16,35 @@
   align-items: center;
 }
 
+@media only screen and (max-width: 375px) {
+  .hero-div {
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: fit-content;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+}
+
 .banner-message {
   font-family: var(--styled-font);
   font-size: 80px;
   color: white;
   margin-right: -12px;
+}
+
+@media only screen and (max-width: 375px) {
+  .banner-message{
+        font-family: var(--styled-font);
+    font-size: 3em;
+    color: white;
+    text-align: center;
+    margin-top: 5%;
+  }
 }
 
 .roladex {
@@ -35,6 +60,23 @@
   animation: roladex 9s linear infinite;
 }
 
+@media only screen and (max-width: 375px) {
+  .roladex {
+    font-family: var(--styled-font);
+    font-size: 2em;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    transform: translateY(-250px);
+    animation: none;
+}
+}
+
+
+
 .banner-slogan {
   font-family: var(--styled-font);
   font-size: 30px;
@@ -46,6 +88,14 @@
   display: flex;
   flex-direction: row;
 }
+
+@media only screen and (max-width: 375px) {
+ .message-container{
+   display: block;
+ }
+}
+
+
 
 .roladex-container {
   height: 81px;

@@ -7,6 +7,7 @@ const CartItemsReducer = (oldState = {}, action) =>{
         case RECEIVE_ALL_CART_ITEMS:
             return action.cartItems;
         case RECEIVE_CART_ITEM:
+            // debugger
             newState[action.cartItem.id] = action.cartItem
             return newState
         case DELETE_CART_ITEM:

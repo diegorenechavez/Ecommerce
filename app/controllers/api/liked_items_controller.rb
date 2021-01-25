@@ -22,7 +22,7 @@ class Api::LikedItemsController < ApplicationController
             render :show 
             
         else
-            render json:['You already liked this item'], status: 404
+            render json:['You already liked this item'], status: 422
         end
     end 
 

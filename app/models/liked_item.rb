@@ -6,10 +6,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  product_id :integer          not null
-#  user_id    :integer          not null
+#  d    :integer          not null
 #
 class LikedItem < ApplicationRecord
-    validates :product_id, uniqueness:true
+    validates :product_id, :id, uniqueness:true
 
     belongs_to :user,
     primary_key: :id,
