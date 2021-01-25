@@ -39,11 +39,16 @@ class CartIndex extends React.Component {
         <hr className="seperator" />
         <div className="temp-div">
           <h3 className="order-processing-header">Billing Details</h3>
-          here we can look into a paypal api thing?
+          <form className="payment-form">
+            <input type="text" name="" id="" placeholder="First Name"/>
+            <input type="text" name="" id="" placeholder="Last Name"/>
+            <input type="text" name="" id="" placeholder="Card Number"/>
+            <input type="text" name="" id="" placeholder="Exp Date"/>
+            <input type="text" name="" id="" placeholder="CVC"/>
+          </form>
           <hr className="seperator" />
           <h3 className="order-processing-header">Shipping Details</h3>
-          we should have inputs for shipping here, maybe update user schema?
-          Like users need :address ?
+         
         </div>
         <button className="checkout-button-show">Place Order</button>
       </div>
