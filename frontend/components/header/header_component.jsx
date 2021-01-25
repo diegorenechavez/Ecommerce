@@ -23,6 +23,7 @@ class Header extends React.Component {
     this.freezePage = this.freezePage.bind(this);
     this.unfreezePage = this.unfreezePage.bind(this);
     this.showCartPreview = this.showCartPreview.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
   componentDidMount() {
@@ -82,6 +83,7 @@ class Header extends React.Component {
   }
 
   handleSubmit(e) {
+    this.props.clearErrors();
     e.preventDefault();
     const user = {
       email: this.state.email,
@@ -93,6 +95,17 @@ class Header extends React.Component {
       .signup(user)
       .then((user) => this.props.login(user))
       .then(this.unfreezePage());
+  }
+
+  handleLogin(e){
+    this.props.clearErrors();
+    e.preventDefault();
+    const user = {
+      username: this.state.username,
+      password: this.state.password
+    }
+    this.props.login(user)
+    .then(this.unfreezePage());
   }
 
   changeForm() {
@@ -111,10 +124,26 @@ class Header extends React.Component {
     }
   }
 
+
+  renderErrors() {
+    return (
+      <ul className="errors-message">
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   render() {
     const showform = this.state.showLogin ? (
       <div className="modal-screen">
-        <form className="register-form" onSubmit={this.handleSubmit}>
+        <div className="session-errors">
+          {this.renderErrors()}
+        </div>
+        <form className="register-form" onSubmit={this.handleLogin}>
           <div className="welcome-banner">
             Welcome Back To Bubbles <p>Lets help you unwind</p>
           </div>
@@ -125,6 +154,7 @@ class Header extends React.Component {
               value={this.state.username}
               type="text"
               placeholder="Username"
+              required
             />
             <input
               className="inputs"
@@ -132,6 +162,7 @@ class Header extends React.Component {
               value={this.state.password}
               type="password"
               placeholder="Password"
+              required
             />
             <button className="form-buttons register-button">Login</button>
             <button
@@ -158,28 +189,32 @@ class Header extends React.Component {
               onChange={this.update("name")}
               value={this.state.name}
               type="text"
-              placeholder="Name"
+                placeholder="Name"
+                required
             />
             <input
               className="inputs"
               onChange={this.update("username")}
               value={this.state.username}
               type="text"
-              placeholder="Username"
+                placeholder="Username"
+                required
             />
             <input
               className="inputs"
               onChange={this.update("email")}
               value={this.state.email}
               type="text"
-              placeholder="Email"
+                placeholder="Email"
+                required
             />
             <input
               className="inputs"
               onChange={this.update("password")}
               value={this.state.password}
               type="password"
-              placeholder="Password"
+                placeholder="Password"
+                required
             />
             <button className="form-buttons register-button">Register</button>
             <button
@@ -231,16 +266,7 @@ class Header extends React.Component {
         </div>
       </div>
     ) : (
-      <div>
-        {/* <button className="session-button register">Register</button>
-                    <button
-                        className="session-button logout"
-                        onClick={() => setSessionForm(true)}
-                    >
-                        Log In
-        </button> */}
-        {/* {showLogin} */}
-      </div>
+        <div className="session-placeholder"></div>
     );
     return (
       <nav>

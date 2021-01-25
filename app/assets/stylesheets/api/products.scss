@@ -50,6 +50,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 100px;
+  position: relative;
 }
 
 .index-cart-button {
@@ -446,6 +447,8 @@ hr.style-7 {
   font-weight: 700;
   opacity: .5;
   margin-bottom: 0;
+  position: absolute;
+  bottom: -25px;
   
 }
 

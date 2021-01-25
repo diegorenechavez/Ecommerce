@@ -2602,12 +2602,16 @@ var deleteCartItem = function deleteCartItem(cartItemId) {
   !*** ./frontend/actions/liked_item_actions.js ***!
   \************************************************/
 /*! namespace exports */
+/*! export CLEAR_ERRORS [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export RECEIVED_ALL_LIKED_ITEMS [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export RECEIVED_LIKED_ITEM [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export RECEIVE_LIKED_ITEM_ERRORS [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export REMOVED_LIKED_ITEM [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export clearErrors [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export createLikedItem [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export deleteLikedItem [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export fetchAllLikedItems [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export receiveLikedItemErrors [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export receivedAllLikedItems [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export receivedLikedItem [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export removeLikedItem [provided] [no usage info] [missing usage info prevents renaming] */
@@ -2621,9 +2625,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "RECEIVED_ALL_LIKED_ITEMS": () => /* binding */ RECEIVED_ALL_LIKED_ITEMS,
 /* harmony export */   "RECEIVED_LIKED_ITEM": () => /* binding */ RECEIVED_LIKED_ITEM,
 /* harmony export */   "REMOVED_LIKED_ITEM": () => /* binding */ REMOVED_LIKED_ITEM,
+/* harmony export */   "RECEIVE_LIKED_ITEM_ERRORS": () => /* binding */ RECEIVE_LIKED_ITEM_ERRORS,
+/* harmony export */   "CLEAR_ERRORS": () => /* binding */ CLEAR_ERRORS,
 /* harmony export */   "receivedAllLikedItems": () => /* binding */ receivedAllLikedItems,
 /* harmony export */   "receivedLikedItem": () => /* binding */ receivedLikedItem,
 /* harmony export */   "deleteLikedItem": () => /* binding */ deleteLikedItem,
+/* harmony export */   "receiveLikedItemErrors": () => /* binding */ receiveLikedItemErrors,
+/* harmony export */   "clearErrors": () => /* binding */ clearErrors,
 /* harmony export */   "fetchAllLikedItems": () => /* binding */ fetchAllLikedItems,
 /* harmony export */   "createLikedItem": () => /* binding */ createLikedItem,
 /* harmony export */   "removeLikedItem": () => /* binding */ removeLikedItem
@@ -2633,6 +2641,8 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVED_ALL_LIKED_ITEMS = "RECEIVED_ALL_LIKED_ITEMS";
 var RECEIVED_LIKED_ITEM = "RECEIVED_LIKED_ITEM";
 var REMOVED_LIKED_ITEM = "REMOVED_LIKED_ITEM";
+var RECEIVE_LIKED_ITEM_ERRORS = "RECEIVE_LIKED_ITEM_ERRORS";
+var CLEAR_ERRORS = "CLEAR_ERRORS";
 var receivedAllLikedItems = function receivedAllLikedItems(likedItems) {
   return {
     type: RECEIVED_ALL_LIKED_ITEMS,
@@ -2651,6 +2661,17 @@ var deleteLikedItem = function deleteLikedItem(likedItemId) {
     likedItemId: likedItemId
   };
 };
+var receiveLikedItemErrors = function receiveLikedItemErrors(errors) {
+  return {
+    type: RECEIVE_LIKED_ITEM_ERRORS,
+    errors: errors
+  };
+};
+var clearErrors = function clearErrors() {
+  return {
+    type: CLEAR_ERRORS
+  };
+};
 var fetchAllLikedItems = function fetchAllLikedItems(userId) {
   return function (dispatch) {
     return _util_liked_items_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchAllLikedItems(userId).then(function (result) {
@@ -2662,6 +2683,8 @@ var createLikedItem = function createLikedItem(liked_item) {
   return function (dispatch) {
     return _util_liked_items_api_util__WEBPACK_IMPORTED_MODULE_0__.createLikedItem(liked_item).then(function (result) {
       return dispatch(receivedLikedItem(result));
+    }, function (errors) {
+      return dispatch(receiveLikedItemErrors(errors.responseJSON));
     });
   };
 };
@@ -2857,13 +2880,13 @@ var removeReview = function removeReview(reviewId) {
 /*! export CLEAR_ERRORS [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export LOGOUT_CURRENT_USER [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export RECEIVE_CURRENT_USER [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export RECEIVE_ERRORS [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export RECEIVE_SESSION_ERRORS [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export clearErrors [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export login [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export logout [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export logoutCurrentUser [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export receiveCurrentUser [provided] [no usage info] [missing usage info prevents renaming] */
-/*! export receiveErrors [provided] [no usage info] [missing usage info prevents renaming] */
+/*! export receiveSessionErrors [provided] [no usage info] [missing usage info prevents renaming] */
 /*! export signup [provided] [no usage info] [missing usage info prevents renaming] */
 /*! other exports [not provided] [no usage info] */
 /*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
@@ -2874,11 +2897,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RECEIVE_CURRENT_USER": () => /* binding */ RECEIVE_CURRENT_USER,
 /* harmony export */   "LOGOUT_CURRENT_USER": () => /* binding */ LOGOUT_CURRENT_USER,
-/* harmony export */   "RECEIVE_ERRORS": () => /* binding */ RECEIVE_ERRORS,
+/* harmony export */   "RECEIVE_SESSION_ERRORS": () => /* binding */ RECEIVE_SESSION_ERRORS,
 /* harmony export */   "CLEAR_ERRORS": () => /* binding */ CLEAR_ERRORS,
 /* harmony export */   "receiveCurrentUser": () => /* binding */ receiveCurrentUser,
 /* harmony export */   "logoutCurrentUser": () => /* binding */ logoutCurrentUser,
-/* harmony export */   "receiveErrors": () => /* binding */ receiveErrors,
+/* harmony export */   "receiveSessionErrors": () => /* binding */ receiveSessionErrors,
 /* harmony export */   "clearErrors": () => /* binding */ clearErrors,
 /* harmony export */   "login": () => /* binding */ login,
 /* harmony export */   "logout": () => /* binding */ logout,
@@ -2888,7 +2911,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 var LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
-var RECEIVE_ERRORS = "RECEIVE_ERRORS";
+var RECEIVE_SESSION_ERRORS = "RECEIVE_ERRORS";
 var CLEAR_ERRORS = "CLEAR_ERRORS";
 var receiveCurrentUser = function receiveCurrentUser(user) {
   return {
@@ -2901,9 +2924,9 @@ var logoutCurrentUser = function logoutCurrentUser() {
     type: LOGOUT_CURRENT_USER
   };
 };
-var receiveErrors = function receiveErrors(errors) {
+var receiveSessionErrors = function receiveSessionErrors(errors) {
   return {
-    type: RECEIVE_ERRORS,
+    type: RECEIVE_SESSION_ERRORS,
     errors: errors
   };
 };
@@ -2917,7 +2940,7 @@ var login = function login(user) {
     return _util_session_api_util_js__WEBPACK_IMPORTED_MODULE_0__.login(user).then(function (res) {
       return dispatch(receiveCurrentUser(res));
     }, function (errors) {
-      return dispatch(receiveErrors(errors.responseJSON));
+      return dispatch(receiveSessionErrors(errors.responseJSON));
     });
   };
 };
@@ -2933,7 +2956,7 @@ var signup = function signup(user) {
     return _util_session_api_util_js__WEBPACK_IMPORTED_MODULE_0__.signup(user).then(function (res) {
       return dispatch(receiveCurrentUser(res));
     }, function (errors) {
-      return dispatch(receiveErrors(errors.responseJSON));
+      return dispatch(receiveSessionErrors(errors.responseJSON));
     });
   };
 };
@@ -3523,11 +3546,38 @@ var CartIndex = /*#__PURE__*/function (_React$Component) {
         className: "temp-div"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
         className: "order-processing-header"
-      }, "Billing Details"), "here we can look into a paypal api thing?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
+      }, "Billing Details"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+        className: "payment-form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        name: "",
+        id: "",
+        placeholder: "First Name"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        name: "",
+        id: "",
+        placeholder: "Last Name"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        name: "",
+        id: "",
+        placeholder: "Card Number"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        name: "",
+        id: "",
+        placeholder: "Exp Date"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        name: "",
+        id: "",
+        placeholder: "CVC"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hr", {
         className: "seperator"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
         className: "order-processing-header"
-      }, "Shipping Details"), "we should have inputs for shipping here, maybe update user schema? Like users need :address ?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      }, "Shipping Details")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "checkout-button-show"
       }, "Place Order"));
     }
@@ -3701,6 +3751,7 @@ var Header = /*#__PURE__*/function (_React$Component) {
     _this.freezePage = _this.freezePage.bind(_assertThisInitialized(_this));
     _this.unfreezePage = _this.unfreezePage.bind(_assertThisInitialized(_this));
     _this.showCartPreview = _this.showCartPreview.bind(_assertThisInitialized(_this));
+    _this.handleLogin = _this.handleLogin.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -3775,6 +3826,7 @@ var Header = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       var _this4 = this;
 
+      this.props.clearErrors();
       e.preventDefault();
       var user = {
         email: this.state.email,
@@ -3785,6 +3837,17 @@ var Header = /*#__PURE__*/function (_React$Component) {
       this.props.signup(user).then(function (user) {
         return _this4.props.login(user);
       }).then(this.unfreezePage());
+    }
+  }, {
+    key: "handleLogin",
+    value: function handleLogin(e) {
+      this.props.clearErrors();
+      e.preventDefault();
+      var user = {
+        username: this.state.username,
+        password: this.state.password
+      };
+      this.props.login(user).then(this.unfreezePage());
     }
   }, {
     key: "changeForm",
@@ -3813,15 +3876,28 @@ var Header = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "renderErrors",
+    value: function renderErrors() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+        className: "errors-message"
+      }, this.props.errors.map(function (error, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+          key: "error-".concat(i)
+        }, error);
+      }));
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this5 = this;
 
       var showform = this.state.showLogin ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "modal-screen"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "session-errors"
+      }, this.renderErrors()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         className: "register-form",
-        onSubmit: this.handleSubmit
+        onSubmit: this.handleLogin
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "welcome-banner"
       }, "Welcome Back To Bubbles ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Lets help you unwind")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -3831,13 +3907,15 @@ var Header = /*#__PURE__*/function (_React$Component) {
         onChange: this.update("username"),
         value: this.state.username,
         type: "text",
-        placeholder: "Username"
+        placeholder: "Username",
+        required: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         className: "inputs",
         onChange: this.update("password"),
         value: this.state.password,
         type: "password",
-        placeholder: "Password"
+        placeholder: "Password",
+        required: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "form-buttons register-button"
       }, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
@@ -3860,25 +3938,29 @@ var Header = /*#__PURE__*/function (_React$Component) {
         onChange: this.update("name"),
         value: this.state.name,
         type: "text",
-        placeholder: "Name"
+        placeholder: "Name",
+        required: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         className: "inputs",
         onChange: this.update("username"),
         value: this.state.username,
         type: "text",
-        placeholder: "Username"
+        placeholder: "Username",
+        required: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         className: "inputs",
         onChange: this.update("email"),
         value: this.state.email,
         type: "text",
-        placeholder: "Email"
+        placeholder: "Email",
+        required: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         className: "inputs",
         onChange: this.update("password"),
         value: this.state.password,
         type: "password",
-        placeholder: "Password"
+        placeholder: "Password",
+        required: true
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "form-buttons register-button"
       }, "Register"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
@@ -3916,7 +3998,9 @@ var Header = /*#__PURE__*/function (_React$Component) {
       }, "Hello,\xA0", this.props.currentUser.name, "!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.props.logout,
         className: "session-button logout"
-      }, "Log Out"))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null);
+      }, "Log Out"))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "session-placeholder"
+      });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "nav-bar"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -3986,7 +4070,8 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state) {
   return {
     currentUserId: state.session.currentUser,
-    currentUser: state.entities.users[state.session.currentUser]
+    currentUser: state.entities.users[state.session.currentUser],
+    errors: state.errors.session
   };
 };
 
@@ -6610,12 +6695,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
+/* harmony import */ var _liked_items_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./liked_items_errors_reducer */ "./frontend/reducers/liked_items_errors_reducer.js");
 
 
-var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
-  session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__.default
+
+var errorsReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+  session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_0__.default,
+  likedItem: _liked_items_errors_reducer__WEBPACK_IMPORTED_MODULE_1__.default
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (errorsReducer);
 
@@ -6664,6 +6752,45 @@ var LikedItemsReducer = function LikedItemsReducer() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LikedItemsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/liked_items_errors_reducer.js":
+/*!*********************************************************!*\
+  !*** ./frontend/reducers/liked_items_errors_reducer.js ***!
+  \*********************************************************/
+/*! namespace exports */
+/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_exports__, __webpack_require__.r, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _actions_liked_item_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/liked_item_actions */ "./frontend/actions/liked_item_actions.js");
+
+
+var likedItemErrorReducer = function likedItemErrorReducer() {
+  var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(oldState);
+
+  switch (action.type) {
+    case _actions_liked_item_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_LIKED_ITEM_ERRORS:
+      return action.errors;
+
+    case _actions_liked_item_actions__WEBPACK_IMPORTED_MODULE_0__.CLEAR_ERRORS:
+      return [];
+
+    default:
+      return oldState;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (likedItemErrorReducer);
 
 /***/ }),
 
@@ -6809,12 +6936,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var sessionErrorsReducer = function sessionErrorsReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state);
+  Object.freeze(oldState);
 
   switch (action.type) {
-    case _actions_session_actions_js__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_ERRORS:
+    case _actions_session_actions_js__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_SESSION_ERRORS:
       return action.errors;
 
     case _actions_session_actions_js__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
@@ -6824,7 +6951,7 @@ var sessionErrorsReducer = function sessionErrorsReducer() {
       return [];
 
     default:
-      return state;
+      return oldState;
   }
 };
 
