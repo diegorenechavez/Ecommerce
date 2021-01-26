@@ -23,6 +23,20 @@ class Api::ProductsController < ApplicationController
         render :show
     end 
 
-   
+    def search
+        query=params[:query]
+        @products = Product.where('name ILIKE ? OR description ILIKE ? OR category ILIKE ?', "%#{query}%", "%#{query}%", "%#{query}%")
+        if @products.length > 0
+            render :index
+        else
+            render json: ["Sorry, we did not find any results for #{query}, try another search"], status: 404
+        end
+        
+    end
+
+    private
+    def product_params
+        params.require(:product).permit(:name, :description, :category)
+    end
 
 end

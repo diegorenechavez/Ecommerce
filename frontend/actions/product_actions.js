@@ -28,7 +28,7 @@ export const fetchProduct = (productId) => (dispatch) => {
 
 
 // NEEDS FOR SEARCH THUNK ACTION CREATO
-// export const getSearchProducts = (query) => dispatch => {
-//     return BusinessApiUtil.getSearchProducts(query)
-//         .then(products => dispatch(receiveAllProducts(products)))
-// }
+export const getSearchProducts = (query) => (dispatch) => {
+    return ProductApiUtil.getSearchProducts(query)
+        .then(result => dispatch(receivedAllProducts(result)))
+}
