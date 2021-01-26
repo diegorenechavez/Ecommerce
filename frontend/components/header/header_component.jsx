@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import SearchBar from "../search_bar/search_bar";
+import SearchBar from "../search_bar/search_bar_container";
 import CartIndexContainer from "../cart/cart_index_container";
 import CartNumber from "../cart/cart_number_container";
 

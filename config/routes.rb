@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     resources :products, only:[:show, :index] do
       # resources :liked_items, only:[:destroy]
       resources :reviews, only:[:create, :index]
+      collection do
+        get :search, to: "products#search", as: "search"
+      end
     end
     resources :liked_items, only:[:show, :create, :destroy]
     resources :reviews, only:[:show, :update, :destroy]

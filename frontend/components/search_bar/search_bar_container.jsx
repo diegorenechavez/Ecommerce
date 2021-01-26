@@ -1,15 +1,17 @@
 import { connect } from "react-redux";
-import SearchBar from "../search_bar";
+import SearchBar from "./search_bar";
 
 //NO ACTIONS YET
-// import { getSearchProducts } from "../../actions/product_actions";
+import { getSearchProducts } from "../../actions/product_actions";
 
 import { withRouter } from "react-router-dom";
 
 const mDTP = (dispatch) => {
+  console.log("ASSSSSSSSSSS")
   return {
     getSearchProducts: (query) => dispatch(getSearchProducts(query)),
   };
 };
 
 export default withRouter(connect(null, mDTP)(SearchBar));
+// export default connect(null, mDTP)(SearchBar);

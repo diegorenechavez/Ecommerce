@@ -3,25 +3,40 @@ import React from "react";
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      query: ''
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.update = this.update.bind(this)
   }
+
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.getSearchProducts(this.state.query)
+      .then(() => this.props.history.push(`/search/${this.state.query}`))
+  }
+
+  update(e) {
+    e.preventDefault();
+    this.setState({ query: e.target.value })
+  }
+
 
   //BIND update
 
-  // handleSubmit
-  //  update(e){
-  //     e.preventDefault();
-  //     this.setState({ query: e.target.value})
-  // }
 
   render() {
+    // if (!this.props.getSearchProducts) {
+    //   return null
+    //  }
     return (
       <div className="search-bar-container">
-        {/* onSubmit={this.handleSubmit} */}
-        <form>
-          <input className="search-field" type="search" placeholder="Search" />
-          {/* <button className="search-button">
+        <form onSubmit={this.handleSubmit}>
+          <input className="search-field" type="search" placeholder="Search" onChange={this.update} />
+          <button className="search-button">
             S
-          </button> */}
+          </button>
         </form>
       </div>
     );
