@@ -12,17 +12,15 @@ export const fetchProduct = (productId) => {
     });
 }
 
-
-
-
-
 // NEEDED FOR SEARCH FETCH
 
-// export const getSearchProduct = (query) => {
-//     return $.ajax({
-//         method: "GET",
-//         url: "/api/product/search",
-//         data: {query: query}
-//     })
-// }
+export const getSearchProducts = (query) => {
+    return $.ajax({
+        method: "GET",
+        url: `/api/products/search`,
+        data: {
+          query: query
+        }
+    })
+}
 

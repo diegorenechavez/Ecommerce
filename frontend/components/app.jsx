@@ -14,6 +14,7 @@ import ProfileContainer from "../components/users/profile_container"
 import LikedItemsContainer from "../components/liked_items/liked_items_container"
 import Footer from "../components/footer"
 import UserReviewsContainer from '../components/reviews/user_reviews_container'
+import ProductIndexContainer from '../components/products/products_index_container'
 
 const App = () => {
   return (
@@ -45,6 +46,7 @@ const App = () => {
           path="/users/:userId"
           component={ProfileContainer}
         />
+        <ProtectedRoute exact path="/search/:query" component={ProductIndexContainer} />
         <ProtectedRoute exact path="/hair" component={HairContainer} />
         <ProtectedRoute exact path="/body" component={BodyContainer} />
         <ProtectedRoute exact path="/face" component={FaceContainer} />
