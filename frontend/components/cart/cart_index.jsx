@@ -11,8 +11,10 @@ class CartIndex extends React.Component {
   componentDidMount() {
     this.props.fetchAllCartItems();
   }
-  componentDidUpdate() { 
-   
+  componentDidUpdate(prevProps) {
+    if (this.props.cartItems.length !== prevProps.cartItems.length) { 
+      this.props.fetchAllCartItems()
+    }
   }
 
   cartTotal() { 
