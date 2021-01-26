@@ -15,14 +15,11 @@ class CartNumber extends React.Component {
        
     }
 
-    // componentDidUpdate(){
-    //     this.cartQuantity()
-    // }
-
+    
 
 
     cartQuantity() { 
-        let sum = 0
+        let sum = 0;
         this.props.cartItems.forEach(cartItem => { 
             sum += cartItem.quantity
             
@@ -41,7 +38,7 @@ class CartNumber extends React.Component {
         // if(!this.props.cartItems[0].quantity) return null
         return (
             <div className="cart-number-wrapper">
-                <h2 className="cart-number">{this.cartQuantity()}</h2>
+                <h2 className="cart-number">{this.cartQuantity() === 0? null : this.cartQuantity()}</h2>
             </div>
         )
     }

@@ -3392,10 +3392,7 @@ var CartNumber = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchAllCartItems();
-    } // componentDidUpdate(){
-    //     this.cartQuantity()
-    // }
-
+    }
   }, {
     key: "cartQuantity",
     value: function cartQuantity() {
@@ -3415,7 +3412,7 @@ var CartNumber = /*#__PURE__*/function (_React$Component) {
         className: "cart-number-wrapper"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
         className: "cart-number"
-      }, this.cartQuantity()));
+      }, this.cartQuantity() === 0 ? null : this.cartQuantity()));
     }
   }]);
 

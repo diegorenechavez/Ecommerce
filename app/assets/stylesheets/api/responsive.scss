@@ -45,10 +45,11 @@
     width: fit-content;
 };
 .section{
-            width: 100%;
-    column-count: 2;
+        display: grid;
+    grid-template-columns: repeat(2,177px);
     
 };
 
   
 }
+
