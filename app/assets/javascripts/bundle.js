@@ -3184,7 +3184,11 @@ var CartIndex = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate() {}
+    value: function componentDidUpdate(prevProps) {
+      if (this.props.cartItems.length !== prevProps.cartItems.length) {
+        this.props.fetchAllCartItems();
+      }
+    }
   }, {
     key: "cartTotal",
     value: function cartTotal() {
@@ -5541,14 +5545,14 @@ var ProductIndex = /*#__PURE__*/function (_React$Component) {
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "product-index-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.products.map(function (product) {
+      }, this.props.products.map(function (product) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_products_product_item__WEBPACK_IMPORTED_MODULE_1__.default, {
           product: product,
           key: product.id,
           currentUserId: _this.props.currentUserId,
           fetchProduct: _this.props.fetchProduct
         });
-      })));
+      }));
     }
   }]);
 
@@ -6361,7 +6365,8 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "search-bar-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
-        onSubmit: this.handleSubmit
+        onSubmit: this.handleSubmit,
+        className: "search-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         className: "search-field",
         type: "search",
@@ -6369,7 +6374,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
         onChange: this.update
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "search-button"
-      }, "S")));
+      })));
     }
   }]);
 
@@ -6961,6 +6966,7 @@ var CartItemsReducer = function CartItemsReducer() {
       return newState;
 
     case _actions_cart_item_actions__WEBPACK_IMPORTED_MODULE_0__.DELETE_CART_ITEM:
+      // debugger
       delete newState[action.cartItemId];
       return newState;
 
