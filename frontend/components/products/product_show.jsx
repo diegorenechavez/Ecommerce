@@ -10,15 +10,17 @@ class ProductShow extends React.Component {
     this.state = {
       infoFlag: "description",
       liked: false,
-      showFeedBack:false
+      showFeedBack: false,
     };
     this.setDescription = this.setDescription.bind(this);
     this.setInstructions = this.setInstructions.bind(this);
     this.goBack = this.goBack.bind(this);
-    this.addToCart = this.addToCart.bind(this)
+    this.addToCart = this.addToCart.bind(this);
+    this.handlelike = this.handlelike.bind(this);
   }
 
   componentDidMount() {
+    this.props.clearErrors();
     this.props.fetchProduct(this.props.match.params.productId);
     this.props.fetchReviews(this.props.match.params.productId);
   }
@@ -27,17 +29,35 @@ class ProductShow extends React.Component {
     this.props.history.goBack();
   }
 
+  handlelike(e) {
+    this.props.clearErrors();
+    e.preventDefault();
+    this.likeItem()
+  }
+
+  renderErrors() {
+    return (
+      <ul className="errors-message">
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>{error}</li>
+        ))}
+      </ul>
+    );
+  }
+
   likeItem() {
     let liked_item = {
       user_id: parseInt(this.props.currentUserId),
-      product_id: parseInt(this.props.product.id)
-    }
+      product_id: parseInt(this.props.product.id),
+    };
     if (this.state.liked === false) {
       this.props.createLikedItem(liked_item);
       this.setState({ liked: true });
-    } else if (this.state.liked) {
+    } 
+    else if (this.state.liked) {
+        return
       // this.props.removeLikedItem(this.props.product.id);
-      this.setState({ liked: false });
+      // this.setState({ liked: false });
     }
   }
 
@@ -49,18 +69,17 @@ class ProductShow extends React.Component {
     this.setState({ infoFlag: "instructions" });
   }
 
-  cart_item () {
+  cart_item() {
     return {
       user_id: parseInt(this.props.currentUserId),
       product_id: parseInt(this.props.product.id),
-      quantity: parseInt(1)
-    }
-
+      quantity: parseInt(1),
+    };
   }
-  addToCart() { 
-    this.setState({ showFeedBack: true })
-    this.props.createCartItem(this.cart_item())
-    setInterval(() => this.setState({showFeedBack:false}), 1500)
+  addToCart() {
+    this.setState({ showFeedBack: true });
+    this.props.createCartItem(this.cart_item());
+    setInterval(() => this.setState({ showFeedBack: false }), 1500);
   }
 
   render() {
@@ -99,11 +118,14 @@ class ProductShow extends React.Component {
               />
               <div className="like-button-container">
                 <img
-                  onClick={() => this.likeItem()}
+                  onClick={this.handlelike}
                   className="like-button"
                   src={heart}
                   alt=""
                 />
+                <div className="liked-item-errors">
+                  {this.renderErrors()}
+                </div>
               </div>
             </div>
             <div className="product-information">
@@ -113,7 +135,10 @@ class ProductShow extends React.Component {
                 <h4 className="product-show-price">Price: ${product.price} </h4>
                 |<h4 className="product-show-size">Size: {product.size}.oz</h4>
               </div>
-              <button className="index-cart-button show-cart-button" onClick={() => this.addToCart()}>
+              <button
+                className="index-cart-button show-cart-button"
+                onClick={() => this.addToCart()}
+              >
                 Add To Cart
               </button>
               {feedback}

@@ -3201,7 +3201,7 @@ var CartIndex = /*#__PURE__*/function (_React$Component) {
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-total"
       }, "Total: $", this.cartTotal()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-        to: "checkout/".concat(this.props.currentUserId)
+        to: "/checkout/".concat(this.props.currentUserId)
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "checkout-button"
       }, "Checkout")));
@@ -3370,15 +3370,17 @@ var CartNumber = /*#__PURE__*/function (_React$Component) {
       num: 0
     };
     return _this;
-  } // componentDidMount() { 
-  //       this.setState({ num: this.cartQuantity() });
-  // }
-  // componentDidUpdate(){
-  //     this.cartQuantity()
-  // }
-
+  }
 
   _createClass(CartNumber, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchAllCartItems();
+    } // componentDidUpdate(){
+    //     this.cartQuantity()
+    // }
+
+  }, {
     key: "cartQuantity",
     value: function cartQuantity() {
       var sum = 0;
@@ -3496,9 +3498,16 @@ var CartIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(CartIndex);
 
   function CartIndex(props) {
+    var _this;
+
     _classCallCheck(this, CartIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      checkout: false
+    };
+    _this.handleCheckout = _this.handleCheckout.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(CartIndex, [{
@@ -3519,10 +3528,42 @@ var CartIndex = /*#__PURE__*/function (_React$Component) {
       return sum;
     }
   }, {
+    key: "handleCheckout",
+    value: function handleCheckout() {
+      this.setState({
+        checkout: true
+      });
+    }
+  }, {
+    key: "close",
+    value: function close() {
+      this.setState({
+        checkout: false
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
+      var orderConfirmed = this.state.checkout ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "order-confirmation"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "order-div"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "order-confirmation-picture"
+      }, "Order Confirmed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "order-confirmation-message"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
+        className: "order-confirmation-header"
+      }, "Thank You ", "".concat(this.props.currentUser.name), "!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        className: "order-confirmation-blurb"
+      }, "Thank you for ordering with Bubbles, your order is on the way!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "order-confirmation-button",
+        onClick: function onClick() {
+          return _this2.close();
+        }
+      }, "Close")))) : null;
       if (!this.props.cartItems) return null;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-show-container"
@@ -3536,7 +3577,7 @@ var CartIndex = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_cart_index_item__WEBPACK_IMPORTED_MODULE_1__.default, {
           cartItem: cartItem,
           key: cartItem.id,
-          deleteCartItem: _this.props.deleteCartItem
+          deleteCartItem: _this2.props.deleteCartItem
         });
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-total-show"
@@ -3549,26 +3590,34 @@ var CartIndex = /*#__PURE__*/function (_React$Component) {
       }, "Billing Details"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         className: "payment-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "checkout-inputs",
         type: "text",
         name: "",
         id: "",
         placeholder: "First Name"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "checkout-inputs",
         type: "text",
         name: "",
         id: "",
         placeholder: "Last Name"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "checkout-inputs",
+        id: "ccn",
+        type: "tel",
+        inputMode: "numeric",
+        pattern: "[0-9\\s]{13,19}",
+        autoComplete: "cc-number",
+        maxLength: "19",
+        placeholder: "xxxx xxxx xxxx xxxx"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "checkout-small-inputs",
         type: "text",
         name: "",
         id: "",
-        placeholder: "Card Number"
+        placeholder: "Exp/ Date"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-        type: "text",
-        name: "",
-        id: "",
-        placeholder: "Exp Date"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "checkout-small-inputs",
         type: "text",
         name: "",
         id: "",
@@ -3577,9 +3626,55 @@ var CartIndex = /*#__PURE__*/function (_React$Component) {
         className: "seperator"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
         className: "order-processing-header"
-      }, "Shipping Details")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "checkout-button-show"
-      }, "Place Order"));
+      }, "Shipping Details"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+        className: "payment-form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "checkout-inputs",
+        type: "text",
+        name: "",
+        id: "",
+        placeholder: "First Name"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "checkout-inputs",
+        type: "text",
+        name: "",
+        id: "",
+        placeholder: "Last Name"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "checkout-inputs",
+        id: "ccn",
+        type: "tel",
+        placeholder: "Street Address"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "checkout-small-inputs",
+        type: "text",
+        name: "",
+        id: "",
+        placeholder: "Apt Num"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "checkout-small-inputs",
+        type: "text",
+        name: "",
+        id: "",
+        placeholder: "Country"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "checkout-small-inputs",
+        type: "text",
+        name: "",
+        id: "",
+        placeholder: "State"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "checkout-small-inputs",
+        type: "text",
+        name: "",
+        id: "",
+        placeholder: "Zip Code"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "checkout-button-show",
+        onClick: function onClick() {
+          return _this2.handleCheckout();
+        }
+      }, "Place Order"), orderConfirmed);
     }
   }]);
 
@@ -5075,12 +5170,14 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
     _this.setInstructions = _this.setInstructions.bind(_assertThisInitialized(_this));
     _this.goBack = _this.goBack.bind(_assertThisInitialized(_this));
     _this.addToCart = _this.addToCart.bind(_assertThisInitialized(_this));
+    _this.handlelike = _this.handlelike.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ProductShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      this.props.clearErrors();
       this.props.fetchProduct(this.props.match.params.productId);
       this.props.fetchReviews(this.props.match.params.productId);
     }
@@ -5088,6 +5185,24 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
     key: "goBack",
     value: function goBack() {
       this.props.history.goBack();
+    }
+  }, {
+    key: "handlelike",
+    value: function handlelike(e) {
+      this.props.clearErrors();
+      e.preventDefault();
+      this.likeItem();
+    }
+  }, {
+    key: "renderErrors",
+    value: function renderErrors() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+        className: "errors-message"
+      }, this.props.errors.map(function (error, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+          key: "error-".concat(i)
+        }, error);
+      }));
     }
   }, {
     key: "likeItem",
@@ -5103,10 +5218,8 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
           liked: true
         });
       } else if (this.state.liked) {
-        // this.props.removeLikedItem(this.props.product.id);
-        this.setState({
-          liked: false
-        });
+        return; // this.props.removeLikedItem(this.props.product.id);
+        // this.setState({ liked: false });
       }
     }
   }, {
@@ -5192,13 +5305,13 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "like-button-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        onClick: function onClick() {
-          return _this3.likeItem();
-        },
+        onClick: this.handlelike,
         className: "like-button",
         src: heart,
         alt: ""
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "liked-item-errors"
+      }, this.renderErrors()))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "product-information"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
         className: "product-show-category"
@@ -5314,7 +5427,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     product: state.entities.products[ownProps.match.params.productId],
     reviews: Object.values(state.entities.reviews[ownProps.match.params.productId] || {}),
-    currentUserId: state.session.currentUser
+    currentUserId: state.session.currentUser,
+    errors: state.errors.likedItem
   };
 };
 
@@ -5334,6 +5448,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     removeLikedItem: function removeLikedItem(likedItemId) {
       return dispatch((0,_actions_liked_item_actions__WEBPACK_IMPORTED_MODULE_4__.removeLikedItem)(likedItemId));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch((0,_actions_liked_item_actions__WEBPACK_IMPORTED_MODULE_4__.clearErrors)());
     }
   };
 };
@@ -6626,6 +6743,7 @@ var CartItemsReducer = function CartItemsReducer() {
       return action.cartItems;
 
     case _actions_cart_item_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CART_ITEM:
+      // debugger
       newState[action.cartItem.id] = action.cartItem;
       return newState;
 

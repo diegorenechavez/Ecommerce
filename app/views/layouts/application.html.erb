@@ -4,6 +4,7 @@
     <title>Bubbles</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Bangers&family=Finger+Paint&family=Permanent+Marker&family=Teko:wght@300;400&display=swap" rel="stylesheet">
 <link rel="icon" type="image/x-icon" href="<%= image_url('bubble.png') %>" />
@@ -22,6 +23,7 @@
   window.learnMoreURL = "<%= image_url('learnmore.png') %>";
   window.cartIconURL = "<%= image_url('cart_icon.png') %>";
   window.avatarURL = "<%= image_url('avatar.png') %>";
+  window.checkoutURL = "<%= image_url('checkoutbanner.png') %>";
   
 </script>
     <%if current_user %>

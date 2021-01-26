@@ -38,7 +38,7 @@ class CartIndex extends React.Component {
           ))}
         </div>
         <div className="cart-total">Total: ${this.cartTotal()}</div>
-        <Link to={`checkout/${this.props.currentUserId}`}>
+        <Link to={`/checkout/${this.props.currentUserId}`}>
           <button className="checkout-button">Checkout</button>
         </Link>
       </div>

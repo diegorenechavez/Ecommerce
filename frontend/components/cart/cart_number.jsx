@@ -9,11 +9,11 @@ class CartNumber extends React.Component {
         }
     }
 
-    // componentDidMount() { 
+    componentDidMount() { 
         
-    //       this.setState({ num: this.cartQuantity() });
+        this.props.fetchAllCartItems();
        
-    // }
+    }
 
     // componentDidUpdate(){
     //     this.cartQuantity()
