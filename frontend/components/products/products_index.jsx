@@ -18,14 +18,12 @@ class ProductIndex extends React.Component{
         }
         return(
             <div className="product-index-container">
-                <ul>
                     {this.props.products.map((product) => (<ProductItem 
                                                                 product={product}
                                                                 key={product.id}
                                                                 currentUserId={this.props.currentUserId}
                                                                 fetchProduct={this.props.fetchProduct}
                                                                 />))}
-                </ul>
             </div>
         )
     }

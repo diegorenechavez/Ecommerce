@@ -11,6 +11,7 @@ const CartItemsReducer = (oldState = {}, action) =>{
             newState[action.cartItem.id] = action.cartItem
             return newState
         case DELETE_CART_ITEM:
+            // debugger
             delete newState[action.cartItemId];
             return newState;
         default:
