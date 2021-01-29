@@ -270,7 +270,7 @@ class Header extends React.Component {
         <div className="session-placeholder"></div>
     );
     return (
-      <nav>
+      <nav className="nav-container">
         <div className="nav-bar">
           <div className="left-side-nav">
             <Link to={"/"}>
