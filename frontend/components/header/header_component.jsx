@@ -292,7 +292,7 @@ class Header extends React.Component {
           </Link>
         </div>
         {registerModal}
-        <div className="disclaimer">*All Images are property of LUSH, and are soley used for demonstration purposes</div>
+        <div className="disclaimer">*All Images are property of LUSH CO, and are soley used for demonstration purposes</div>
       </nav>
     );
   }
