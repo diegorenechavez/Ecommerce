@@ -18,7 +18,8 @@ const mapStateToProps = (state, ownProps) => {
             reviews: Object.values(state.entities.reviews[ownProps.match.params.productId] || {}),
             currentUserId: state.session.currentUser,
             errors: state.errors.likedItem,
-            likedItems: Object.values(state.entities.likedItems).map(likedItem => likedItem.product_id)
+            likedItems: Object.values(state.entities.likedItems),
+            likedItemsArr: Object.values(state.entities.likedItems).map(likedItem => likedItem.product_id),
         }
     
 }

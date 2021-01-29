@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     end 
     resource :session, only:[:create, :destroy]
     resources :products, only:[:show, :index] do
-      # resources :liked_items, only:[:destroy]
       resources :reviews, only:[:create, :index]
       collection do
         get :search, to: "products#search", as: "search"
