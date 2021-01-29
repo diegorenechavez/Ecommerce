@@ -22,7 +22,9 @@ class ProductShow extends React.Component {
   componentDidMount() {
     this.props.clearErrors();
     this.props.fetchProduct(this.props.match.params.productId);
+    this.props.fetchAllLikedItems(this.props.currentUserId);
     this.props.fetchReviews(this.props.match.params.productId);
+
   }
 
   goBack() {
@@ -88,6 +90,12 @@ class ProductShow extends React.Component {
     }
     if (!this.props.reviews) {
       return null;
+    }
+    if (!this.props.likedItems){
+      return null
+    }
+    if (this.props.likedItems.includes(this.props.product.id)){
+      this.state.liked = true
     }
     const feedback = this.state.showFeedBack ? (
       <h3 className="cart-feed-back-show">Added To Cart!</h3>

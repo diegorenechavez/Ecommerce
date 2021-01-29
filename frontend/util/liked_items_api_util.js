@@ -5,6 +5,7 @@ export const fetchAllLikedItems = (userId) => {
     })
 }
 
+
 export const createLikedItem = (liked_item) => {
     return $.ajax({
         url: `api/liked_items`,

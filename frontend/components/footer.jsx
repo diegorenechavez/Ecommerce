@@ -6,7 +6,7 @@ const Footer = () => {
             <img src={window.footBannerURL} alt="" className="foot-banner" />
             <div className="footer">
                 Contact Me | Portfolio | LinkedIn
-            <img src={window.meURL} alt="" className="me" />
+            {/* <img src={window.meURL} alt="" className="me" /> */}
             </div>
         </div>
     )

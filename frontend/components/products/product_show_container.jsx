@@ -6,6 +6,7 @@ import {
   createLikedItem,
   removeLikedItem,
   clearErrors,
+fetchAllLikedItems
 } from "../../actions/liked_item_actions";
 import Product from './product_show'
 import LikedItem from "../liked_items/liked_item";
@@ -16,7 +17,8 @@ const mapStateToProps = (state, ownProps) => {
             product: state.entities.products[ownProps.match.params.productId],
             reviews: Object.values(state.entities.reviews[ownProps.match.params.productId] || {}),
             currentUserId: state.session.currentUser,
-            errors: state.errors.likedItem
+            errors: state.errors.likedItem,
+            likedItems: Object.values(state.entities.likedItems).map(likedItem => likedItem.product_id)
         }
     
 }
@@ -25,6 +27,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchProduct: (productId) => dispatch(fetchProduct(productId)),
         fetchReviews: (productId) => dispatch(fetchReviews(productId)),
+        fetchAllLikedItems: (userId) => dispatch(fetchAllLikedItems(userId)),
         createCartItem: (cartItem) => dispatch(createCartItem(cartItem)),
         createLikedItem: (liked_item) => dispatch(createLikedItem(liked_item)),
         removeLikedItem: (likedItemId) => dispatch(removeLikedItem(likedItemId)),
