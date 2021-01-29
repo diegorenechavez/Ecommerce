@@ -1,3 +1,69 @@
+@media only screen and (min-width: 1500px){
+
+    .footer-container{
+        width: 1500px;
+        margin: auto;
+    }
+    .nav-container{
+        width: 1500px;
+        margin: auto;
+    }
+    .hero-div {
+    background-image: image_url('hero_banner.png');
+    background-repeat: no-repeat;
+    height: 380px;
+    width: 1500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: auto;
+    
+}.hair {
+    background-image: image_url("hair_banner.png");
+    background-repeat: no-repeat;
+    height: 380px;
+    width: 1500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+    margin: auto;
+}
+
+.body {
+    background-image: image_url("body_banner.png");
+    background-repeat: no-repeat;
+    height: 380px;
+    width: 1500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+    margin: auto;
+}
+
+.face {
+    background-image: imgae_url("face_banner.png");
+    background-repeat: no-repeat;
+    height: 380px;
+    width: 1500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+    margin: auto;
+}
+}
+
+
 @media only screen and (max-width: 375px) {
     .nav-bar {
         display: flex;

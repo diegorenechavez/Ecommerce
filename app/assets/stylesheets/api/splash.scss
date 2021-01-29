@@ -2,7 +2,19 @@
 //   width: 100vw;
 //   height: 300px;
 // }
+.links{
+  display: flex;
+    margin-top: 10px;
+    font-size: 15px;
+}
 
+.diego{
+  font-size: 20px;
+}
+
+.paulo{
+  font-size: 20px;
+}
 
 .hero-div {
   background-image: image-url("hero_banner.png");
@@ -16,6 +28,24 @@
   background-position-y: -226px;
     background-position-x: -501px;
 }
+
+@media only screen and (min-width: 1500px){
+   
+    .hero-div {
+    background-image: image_url('hero_banner.png');
+    background-repeat: no-repeat;
+    height: 380px;
+    width: 1500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: auto;
+    }
+  }
+
+
 
 @media only screen and (max-width: 375px) {
   .hero-div {
