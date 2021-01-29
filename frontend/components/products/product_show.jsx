@@ -24,8 +24,9 @@ class ProductShow extends React.Component {
     this.props.fetchProduct(this.props.match.params.productId);
     this.props.fetchAllLikedItems(this.props.currentUserId);
     this.props.fetchReviews(this.props.match.params.productId);
-
   }
+
+
 
   goBack() {
     this.props.history.goBack();
@@ -34,18 +35,21 @@ class ProductShow extends React.Component {
   handlelike(e) {
     this.props.clearErrors();
     e.preventDefault();
-    this.likeItem()
+    if(this.state.liked){
+      this.unlikeItem()
+    } else{
+      this.likeItem()
+    }
   }
 
-  // renderErrors() {
-  //   return (
-  //     <ul className="errors-message">
-  //       {this.props.errors.map((error, i) => (
-  //         <li key={`error-${i}`}>{error}</li>
-  //       ))}
-  //     </ul>
-  //   );
-  // }
+  unlikeItem(){
+    let likedItemIndex = this.props.likedItemsArr.indexOf(this.props.product.id);
+    let likedItemToRemove = this.props.likedItems[likedItemIndex];
+    if(this.state.liked === true){
+      this.props.removeLikedItem(likedItemToRemove.liked_item_id)
+      this.setState({liked: false})
+    }
+  }
 
   likeItem() {
     let liked_item = {
@@ -56,11 +60,6 @@ class ProductShow extends React.Component {
       this.props.createLikedItem(liked_item);
       this.setState({ liked: true });
     } 
-    else if (this.state.liked) {
-        return
-      // this.props.removeLikedItem(this.props.product.id);
-      // this.setState({ liked: false });
-    }
   }
 
   setDescription() {
@@ -94,14 +93,18 @@ class ProductShow extends React.Component {
     if (!this.props.likedItems){
       return null
     }
-    if (this.props.likedItems.includes(this.props.product.id)){
+    if (!this.props.likedItemsArr){
+      return null
+    }
+    if (this.props.likedItemsArr.includes(this.props.product.id)){
       this.state.liked = true
     }
+
     const feedback = this.state.showFeedBack ? (
       <h3 className="cart-feed-back-show">Added To Cart!</h3>
     ) : null;
     const { product } = this.props;
-    const heart = this.state.liked ? window.fullHeartURL : window.emptyHeartURL;
+    let heart = this.state.liked ? window.fullHeartURL : window.emptyHeartURL;
     const info =
       this.state.infoFlag === "description" ? (
         <h1 className="instruction-text">{this.props.product.description}</h1>
