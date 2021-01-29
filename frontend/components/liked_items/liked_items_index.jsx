@@ -8,7 +8,6 @@ class LikedItemsIndex extends React.Component{
 
     componentDidMount() { 
         this.props.fetchAllLikedItems(this.props.currentUserId)
-        // console.log(this.props.likedItems)
     }
 
 

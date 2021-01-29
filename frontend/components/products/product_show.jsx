@@ -35,15 +35,15 @@ class ProductShow extends React.Component {
     this.likeItem()
   }
 
-  renderErrors() {
-    return (
-      <ul className="errors-message">
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>{error}</li>
-        ))}
-      </ul>
-    );
-  }
+  // renderErrors() {
+  //   return (
+  //     <ul className="errors-message">
+  //       {this.props.errors.map((error, i) => (
+  //         <li key={`error-${i}`}>{error}</li>
+  //       ))}
+  //     </ul>
+  //   );
+  // }
 
   likeItem() {
     let liked_item = {
@@ -79,7 +79,7 @@ class ProductShow extends React.Component {
   addToCart() {
     this.setState({ showFeedBack: true });
     this.props.createCartItem(this.cart_item());
-    setInterval(() => this.setState({ showFeedBack: false }), 1500);
+    setTimeout(() => this.setState({ showFeedBack: false }), 1500);
   }
 
   render() {
@@ -123,9 +123,9 @@ class ProductShow extends React.Component {
                   src={heart}
                   alt=""
                 />
-                <div className="liked-item-errors">
+                {/* <div className="liked-item-errors">
                   {this.renderErrors()}
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="product-information">
@@ -211,7 +211,7 @@ class ProductShow extends React.Component {
         </section>
         {/* <ReviewsIndexContainer product={product} /> */}
         {/* <ReviewIndex className="SEE MEEE" reviews={this.props.reviews} fetchReviews={this.props.fetchReviews} productId={this.props.product.id}/> */}
-        {/* {console.log(
+        {/* 
           <ReviewIndex className="SEE MEEE" reviews={this.props.reviews} />
         )} */}
       </div>

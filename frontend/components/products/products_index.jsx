@@ -23,6 +23,7 @@ class ProductIndex extends React.Component{
                                                                 key={product.id}
                                                                 currentUserId={this.props.currentUserId}
                                                                 fetchProduct={this.props.fetchProduct}
+                                                                createCartItem={this.props.createCartItem}
                                                                 />))}
             </div>
         )

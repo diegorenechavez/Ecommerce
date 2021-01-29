@@ -175,6 +175,13 @@
 
 }
 
+@media only screen and (max-width:375px){
+ .gradient{
+    display: none;
+}
+}
+
+
 .cart-number{
   color: white;
     margin-right: 10px;
