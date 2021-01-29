@@ -15,18 +15,17 @@ const ProductItem = (props) => {
     setPicture(props.product.photoUrls[0]);
   };
 
-  const cart_item = () => {
-    return {
-      user_id: parseInt(props.currentUserId),
-      product_id: parseInt(props.product.id),
-      quantity: parseInt(1),
+  const cart_item =  {
+      user_id: props.currentUserId,
+      product_id: props.product.id,
+      quantity: 1,
     };
-  };
 
   const [confirm, setConfirm] = useState(false);
+  
   const addToCart = () => {
     setConfirm(true);
-    props.createCartItem(cart_item());
+    props.createCartItem(cart_item);
     setTimeout(() => setConfirm(false), 2000);
   };
 

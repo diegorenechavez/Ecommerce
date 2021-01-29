@@ -1,7 +1,9 @@
 // Place all the styles related to the api/Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+*{
+  
+}
 .item-details {
   font-family: var(--styled-font);
   margin: 10px;
@@ -178,6 +180,7 @@ hr.style-7 {
   margin-top: 35px;
 }
 
+
 .product-use-container {
   display: flex;
   flex-direction: row;
@@ -248,6 +251,26 @@ hr.style-7 {
   margin: 50px;
 }
 
+@media screen and (max-width: 1000px) {
+    .packagin-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 50px;
+        height: 50vh;
+    }
+}
+@media screen and (max-width: 375px) {
+    .packagin-container {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        margin: 0px;
+        width: 100vw;
+    }
+}
+
+
 .packaging-blurb {
   width: 30%;
   background-color: var(--main-black);
@@ -260,6 +283,40 @@ hr.style-7 {
   padding: 40px;
   line-height: 24px;
 }
+
+@media screen and (max-width: 1000px) {
+  .packaging-blurb{
+      width: 30%;
+      background-color: var(--main-black);
+      color: white;
+      font-family: var(--functional-font);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      /* padding: 40px; */
+      line-height: 24px;
+      padding: 24px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .packaging-blurb {
+      width: 100vw;
+      background-color: var(--main-black);
+      color: white;
+      font-family: var(--functional-font);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px;
+      line-height: 24px;
+  }
+}
+
+
+
 
 .packaging-title {
   font-family: var(--styled-font);
@@ -402,7 +459,6 @@ hr.style-7 {
 .review-button {
   width: 220px;
   height: 50px;
-
   font-size: 18px;
 }
 
@@ -421,9 +477,57 @@ hr.style-7 {
   margin-bottom: 50px;
 }
 
+@media only screen and (max-width: 375px){
+.product-index {
+    width: 100%;
+    margin: auto;
+    height: fit-content;
+    margin-top: 50px;
+    grid-template-columns: 2;
+    display: grid;
+    grid-template-columns: 2 150px;
+    grid-template-columns: repeat(2, 50%);
+}
+}
+
+@media only screen and (max-width: 900px) {
+    .product-index{
+        width: 100vw;
+        margin: auto;
+        height: fit-content;
+        margin-top: 50px;
+        /* column-count: 2; */
+        margin-bottom: 50px;
+        display: grid;
+        grid-template-columns: repeat(2,300px);
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+    
+}
+
+@media only screen and (max-width: 1100px) {
+    .product-index{
+        width: 100vw;
+        margin: auto;
+        height: fit-content;
+        margin-top: 50px;
+        /* column-count: 2; */
+        margin-bottom: 50px;
+        display: grid;
+        grid-template-columns: repeat(3,300px);
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+    } 
+}
+
+
 .product-index > *{
     break-inside: avoid-column;
 }
+
 
 .spinner-container{
   display: flex;
@@ -459,6 +563,5 @@ hr.style-7 {
   font-weight: 700;
   opacity: .5;
   margin-bottom: 5px;
-  
 }
 

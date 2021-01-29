@@ -7,7 +7,6 @@ import { getSearchProducts } from "../../actions/product_actions";
 import { withRouter } from "react-router-dom";
 
 const mDTP = (dispatch) => {
-  console.log("ASSSSSSSSSSS")
   return {
     getSearchProducts: (query) => dispatch(getSearchProducts(query)),
   };

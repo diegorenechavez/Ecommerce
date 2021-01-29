@@ -29,7 +29,7 @@ class Hair extends React.Component {
         <div className="splash-background">
           <div className="hair">
             <div className="message-container">
-              <h1 className="banner-message">For</h1>
+              <h1 className="banner-message category-for">For</h1>
               <div className="roladex-container">
                 <div className="word-container">
                   <div className="words one for-product">Hair</div>{" "}

@@ -34,7 +34,6 @@ class CartNumber extends React.Component {
 
     render() {
         if(!this.props.cartItems) return null
-        console.log(this.props.cartItems)
         // if(!this.props.cartItems[0].quantity) return null
         return (
             <div className="cart-number-wrapper">
