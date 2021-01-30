@@ -1,4 +1,4 @@
-import React from "React";
+import React from "react";
 import ProductItem from "../products/product_item"
 import ReviewIndex from "../reviews/reviews_index";
 import Spinner from "../spinner";
