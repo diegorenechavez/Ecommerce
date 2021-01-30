@@ -119,6 +119,8 @@ class ProductShow extends React.Component {
       this.state.liked = true
     }
 
+    if (!this.props.product.photoUrls) return null;
+
     const feedback = this.state.showFeedBack ? (
       <h3 className="cart-feed-back-show">Added To Cart!</h3>
     ) : null;

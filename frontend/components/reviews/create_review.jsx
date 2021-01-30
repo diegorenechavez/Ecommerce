@@ -38,6 +38,9 @@ class CreateReview extends React.Component {
     if (!this.props.product) {
       return null;
     }
+    if (!this.props.product.photoUrls) {
+      return null;
+    }
     return (
       <div className="create-review-container">
         <div className="product-review-info">

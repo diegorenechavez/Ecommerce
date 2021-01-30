@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const ProductItem = (props) => {
+  if (!props.product.photoUrls) return null
   const photo = props.product.photoUrls.length
     ? props.product.photoUrls[0]
     : null;
