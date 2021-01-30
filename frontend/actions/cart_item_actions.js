@@ -19,12 +19,7 @@ const receiveCartItem = (cartItem) => {
     }
 }
 
-// const createCartItem = (cartItem) => {
-//     return {
-//         type: CREATE_CART_ITEM,
-//         data: {cartItem}
-//     }
-// }
+
 
 const removeCartItem = (cartItemId) => {
     return {
