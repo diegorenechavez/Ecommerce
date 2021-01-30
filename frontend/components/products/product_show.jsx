@@ -11,6 +11,7 @@ class ProductShow extends React.Component {
       infoFlag: "description",
       liked: false,
       showFeedBack: false,
+      included: false
     };
     this.setDescription = this.setDescription.bind(this);
     this.setInstructions = this.setInstructions.bind(this);
@@ -24,7 +25,19 @@ class ProductShow extends React.Component {
     this.props.fetchProduct(this.props.match.params.productId);
     this.props.fetchAllLikedItems(this.props.currentUserId);
     this.props.fetchReviews(this.props.match.params.productId);
+    
   }
+
+  componentDidUpdate(prevProps, PrevState) { 
+    if (this.state.liked !== PrevState.liked) { 
+      this.props.fetchAllLikedItems()
+    }
+  }
+
+  
+  
+
+
 
 
 
@@ -32,23 +45,29 @@ class ProductShow extends React.Component {
     this.props.history.goBack();
   }
 
-  handlelike(e) {
+  handlelike() {
     this.props.clearErrors();
-    e.preventDefault();
-    if(this.state.liked){
+    // e.preventDefault();
+    if(this.state.liked === true){
       this.unlikeItem()
-    } else{
+    } else if(this.state.liked === false){
       this.likeItem()
     }
   }
 
-  unlikeItem(){
-    let likedItemIndex = this.props.likedItemsArr.indexOf(this.props.product.id);
+  unlikeItem() {
+    console.log("can U SEEEEEE MEEEE");
+
+    let likedItemIndex = this.props.likedItemsArr.indexOf(
+      this.props.product.id
+    );
+    
     let likedItemToRemove = this.props.likedItems[likedItemIndex];
-    if(this.state.liked === true){
-      this.props.removeLikedItem(likedItemToRemove.liked_item_id)
-      this.setState({liked: false})
-    }
+    
+    this.props
+      .removeLikedItem(likedItemToRemove.liked_item_id)
+      .then(() => this.setState({ liked: false }));
+    
   }
 
   likeItem() {
