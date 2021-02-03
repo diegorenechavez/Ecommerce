@@ -2,12 +2,14 @@ import React from "react";
 import { Provider } from "react-redux";
 import { HashRouter } from "react-router-dom";
 import App from "./app.jsx";
-// import LoadingIndicator from "./loading_indicator";
+import Scroll from "./scroll"
+
 
 const Root = ({ store }) => {
   return (
     <Provider store={store}>
       <HashRouter>
+        <Scroll/>
         <App />
         {/* <LoadingIndicator /> */}
       </HashRouter>
