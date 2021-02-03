@@ -11,7 +11,9 @@ class ProductShow extends React.Component {
       infoFlag: "description",
       liked: false,
       showFeedBack: false,
-      included: false
+      included: false,
+      added: false,
+      removed: false
     };
     this.setDescription = this.setDescription.bind(this);
     this.setInstructions = this.setInstructions.bind(this);
@@ -67,6 +69,8 @@ class ProductShow extends React.Component {
     this.props
       .removeLikedItem(likedItemToRemove.liked_item_id)
       .then(() => this.setState({ liked: false }));
+    this.setState({ removed: true })
+    setTimeout(() => this.setState({removed:false}), 1500)
     
   }
 
@@ -78,6 +82,8 @@ class ProductShow extends React.Component {
     if (this.state.liked === false) {
       this.props.createLikedItem(liked_item);
       this.setState({ liked: true });
+      this.setState({ added: true });
+      setTimeout(()=>this.setState({added:false}),1500)
     } 
   }
 
@@ -121,6 +127,8 @@ class ProductShow extends React.Component {
 
     if (!this.props.product.photoUrls) return null;
 
+    const likedFeedBack = this.state.added ? <p className="added-feedback">Added To Liked Items</p> :null
+    const unlikedFeedBack = this.state.removed ? <p className="added-feedback">Removed From Liked Items</p> :null
     const feedback = this.state.showFeedBack ? (
       <h3 className="cart-feed-back-show">Added To Cart!</h3>
     ) : null;
@@ -155,9 +163,8 @@ class ProductShow extends React.Component {
                   src={heart}
                   alt=""
                 />
-                {/* <div className="liked-item-errors">
-                  {this.renderErrors()}
-                </div> */}
+                {likedFeedBack}
+                {unlikedFeedBack}
               </div>
             </div>
             <div className="product-information">
