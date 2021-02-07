@@ -394,3 +394,14 @@
     flex-direction: column;
     justify-content: center;
   }
+
+  .items-in-cart{
+    display: flex;
+    font-family: var(--styled-font);
+    font-size: 35px;
+    letter-spacing: 2px;
+  }
+
+  .items-in-cart > p{
+    color: var(--main-purple);
+  }

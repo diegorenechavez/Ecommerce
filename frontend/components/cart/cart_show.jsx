@@ -33,6 +33,14 @@ class CartIndex extends React.Component {
     this.setState({checkout:false})
   }
 
+  numberOfItems() { 
+    let totalItems = 0
+    this.props.cartItems.map((cartItem) => { 
+      totalItems += cartItem.quantity
+    })
+    return totalItems
+  }
+
   render() {
     const orderConfirmed = this.state.checkout ? <div className="order-confirmation">
       <div className="order-div">
@@ -56,6 +64,10 @@ class CartIndex extends React.Component {
       <div className="cart-show-container">
         <h1 className="cart-show-header-name">{this.props.currentUser.name}</h1>
         <h2 className="cart-show-header">Review Your Order Details</h2>
+        <h3 className="items-in-cart">
+          <p>{this.numberOfItems() === 0 ? 0 : this.numberOfItems()}</p>
+          &nbsp;{this.numberOfItems() > 1 ? "Items In Cart" : "Item In Cart"}
+        </h3>
         <div className="cart-items-show-wrapper">
           {this.props.cartItems.map((cartItem) => (
             <CartIndexItem
@@ -70,26 +82,104 @@ class CartIndex extends React.Component {
         <div className="temp-div">
           <h3 className="order-processing-header">Billing Details</h3>
           <form className="payment-form">
-            <input className="checkout-inputs"   type="text" name="" id="" placeholder="First Name"/>
-            <input  className="checkout-inputs"  type="text" name="" id="" placeholder="Last Name"/>
-            <input className="checkout-inputs" id="ccn" type="tel" inputMode="numeric" pattern="[0-9\s]{13,19}" autoComplete="cc-number" maxLength="19" placeholder="xxxx xxxx xxxx xxxx"/>
-            <input className="checkout-small-inputs" type="text" name="" id="" placeholder="Exp/ Date"/>
-            <input className="checkout-small-inputs" type="text" name="" id="" placeholder="CVC"/>
+            <input
+              className="checkout-inputs"
+              type="text"
+              name=""
+              id=""
+              placeholder="First Name"
+            />
+            <input
+              className="checkout-inputs"
+              type="text"
+              name=""
+              id=""
+              placeholder="Last Name"
+            />
+            <input
+              className="checkout-inputs"
+              id="ccn"
+              type="tel"
+              inputMode="numeric"
+              pattern="[0-9\s]{13,19}"
+              autoComplete="cc-number"
+              maxLength="19"
+              placeholder="xxxx xxxx xxxx xxxx"
+            />
+            <input
+              className="checkout-small-inputs"
+              type="text"
+              name=""
+              id=""
+              placeholder="Exp/ Date"
+            />
+            <input
+              className="checkout-small-inputs"
+              type="text"
+              name=""
+              id=""
+              placeholder="CVC"
+            />
           </form>
           <hr className="seperator" />
           <h3 className="order-processing-header">Shipping Details</h3>
           <form className="payment-form">
-            <input className="checkout-inputs" type="text" name="" id="" placeholder="First Name" />
-            <input className="checkout-inputs" type="text" name="" id="" placeholder="Last Name" />
-            <input className="checkout-inputs" id="ccn" type="tel" placeholder="Street Address" />
-            <input className="checkout-small-inputs" type="text" name="" id="" placeholder="Apt Num" />
-            <input className="checkout-small-inputs" type="text" name="" id="" placeholder="Country" />
-            <input className="checkout-small-inputs" type="text" name="" id="" placeholder="State" />
-            <input className="checkout-small-inputs" type="text" name="" id="" placeholder="Zip Code" />
+            <input
+              className="checkout-inputs"
+              type="text"
+              name=""
+              id=""
+              placeholder="First Name"
+            />
+            <input
+              className="checkout-inputs"
+              type="text"
+              name=""
+              id=""
+              placeholder="Last Name"
+            />
+            <input
+              className="checkout-inputs"
+              id="ccn"
+              type="tel"
+              placeholder="Street Address"
+            />
+            <input
+              className="checkout-small-inputs"
+              type="text"
+              name=""
+              id=""
+              placeholder="Apt Num"
+            />
+            <input
+              className="checkout-small-inputs"
+              type="text"
+              name=""
+              id=""
+              placeholder="Country"
+            />
+            <input
+              className="checkout-small-inputs"
+              type="text"
+              name=""
+              id=""
+              placeholder="State"
+            />
+            <input
+              className="checkout-small-inputs"
+              type="text"
+              name=""
+              id=""
+              placeholder="Zip Code"
+            />
           </form>
-         
         </div>
-        <button className="checkout-button-show" onClick={() => this.handleCheckout()}>Place Order</button>
+        <button
+          className="checkout-button-show"
+          onClick={() => this.handleCheckout()}
+        >
+          Place Order
+        </button>
         {orderConfirmed}
       </div>
     );
