@@ -24,7 +24,7 @@
     width: 400px;
     height: fit-content;
     top: 50px;
-    right: 50px;
+    right: -240px;
     background-color: white;
     border: none;
     border-radius: 15px;
@@ -81,7 +81,7 @@
 .close-cart-button{
     position: absolute;
     top: 43px;
-    right: 40px;
+    right: -245px;
     background: white;
     height: 30px;
     width: 30px;
@@ -153,16 +153,10 @@
 
 }
 
-// .cart{
+#cart{
    
-    // z-index: 1;
-    // left: 0;
-    // top: 0;
-    // width: 100%;
-    // height: 100%;
-    // overflow: auto;
-    // background-color: transparent;
-// }
+    position: relative;
+}
 
 .gradient{
     position: fixed;
