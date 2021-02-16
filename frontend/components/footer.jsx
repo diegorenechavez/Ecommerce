@@ -38,7 +38,7 @@ const Footer = () => {
             </a>
             &nbsp; |&nbsp;{" "}
             <a
-              href="https://paulobocanegra.github.io/portfolio/"
+              href="https://paulo-bocanegra-portfolio.herokuapp.com/"
               target="_blank"
             >
               {" "}
