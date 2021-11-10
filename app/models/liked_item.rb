@@ -10,7 +10,6 @@
 #
 class LikedItem < ApplicationRecord
     validates :product_id, :id, uniqueness:true
-    # test comment
 
     belongs_to :user,
     primary_key: :id,
